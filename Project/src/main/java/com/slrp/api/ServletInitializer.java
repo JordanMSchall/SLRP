@@ -1,4 +1,4 @@
-package com.softeng.project;
+package com.slrp.api;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

@@ -1,4 +1,4 @@
-package com.softeng.project.controller;
+package com.slrp.api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

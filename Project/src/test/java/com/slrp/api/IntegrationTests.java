@@ -1,4 +1,4 @@
-package com.softeng.project;
+package com.slrp.api;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 
 
-@SpringBootTest(classes = com.softeng.project.Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = com.slrp.api.Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationTests {
 	@LocalServerPort
 	private int port;

@@ -1,4 +1,4 @@
-package com.softeng.project.model;
+package com.slrp.api.model;
 
 public class Greeting {
 	private final long id;

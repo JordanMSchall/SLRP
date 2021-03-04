@@ -1,4 +1,4 @@
-package com.softeng.project;
+package com.slrp.api;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

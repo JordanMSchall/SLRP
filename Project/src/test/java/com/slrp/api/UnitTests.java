@@ -1,4 +1,4 @@
-package com.softeng.project;
+package com.slrp.api;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-@SpringBootTest(classes = com.softeng.project.Application.class)
+@SpringBootTest(classes = com.slrp.api.Application.class)
 @AutoConfigureMockMvc
 public class UnitTests {
 
