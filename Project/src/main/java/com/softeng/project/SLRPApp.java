@@ -1,6 +1,5 @@
 package com.softeng.project;
 
-import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,10 +9,10 @@ import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-public class ProjectApplication {
+public class SLRPApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectApplication.class, args);
+		SpringApplication.run(SLRPApp.class, args);
 	}
 	
 	@Bean
