@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 
 
-@SpringBootTest(classes = com.slrp.api.Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = com.slrp.Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationTests {
 	@LocalServerPort
 	private int port;

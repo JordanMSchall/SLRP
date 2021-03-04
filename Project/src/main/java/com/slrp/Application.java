@@ -1,4 +1,4 @@
-package com.slrp.api;
+package com.slrp;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

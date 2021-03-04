@@ -1,4 +1,4 @@
-package com.slrp.api;
+package com.slrp;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
