@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-@SpringBootTest
+@SpringBootTest(classes = com.softeng.project.Application.class)
 @AutoConfigureMockMvc
 public class UnitTests {
 
