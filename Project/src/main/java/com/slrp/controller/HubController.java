@@ -24,6 +24,10 @@ public class HubController {
 		return "Greetings from Student!";
 	}
 	
+	@RequestMapping("/contributor")
+	public String contributor() {
+		return "contributor";
+	}
 	
 	@RequestMapping("/t")
 	public String test() {
