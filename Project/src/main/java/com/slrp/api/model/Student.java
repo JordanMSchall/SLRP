@@ -19,6 +19,13 @@ public class Student extends User {
 		private double interest;
 		private String dateTaken;
 		//Additional Loan Information (Interest Rate, Last Date Paid, Date Taken)
+		public Loan(int amount, double interest, String ID)
+		{
+			this.setLoanamount(amount);
+			this.setInterest(interest);
+			this.setID(ID);
+		}
+		
 		public int getLoanamount() {
 			return loanamount;
 		}
@@ -52,11 +59,20 @@ public class Student extends User {
 	@Column(name="loans")
 	private ArrayList<Loan> loans = new ArrayList<Loan>();
 
+	public Student(String name, String phonenumber, String address, ArrayList<Loan> loans)
+	{
+		super(name,phonenumber,address);
+		this.setLoans(loans);
+	}
 	public ArrayList<Loan> getLoans() {
 		return loans;
 	}
 
 	public void setLoans(ArrayList<Loan> loans) {
 		this.loans = loans;
+	}
+	public void addLoan(Loan l)
+	{
+		this.getLoans().add(l);
 	}
 }

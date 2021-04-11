@@ -33,6 +33,13 @@ public class User {
 	@Column(name="address")
 	private String address;
 	
+	public User(String Name, String contactInfo, String address)
+	{
+		this.setAddress(address);
+		this.setName(Name);
+		this.setContactInfo(contactInfo);
+	}
+	
 	public Integer getId() {
 		return id;
 	}
