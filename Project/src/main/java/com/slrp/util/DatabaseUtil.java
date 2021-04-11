@@ -16,6 +16,11 @@ import org.hibernate.Transaction;
  * @since JavaSE-1.8
  */
 public class DatabaseUtil {
+	
+	public static List<?> getSchoolLoans(){
+		return new ArrayList<String>();
+	}
+	
 //	static SessionFactory sessionFactory = null;
 //
 //	public static SessionFactory getSessionFactory() {
