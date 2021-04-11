@@ -13,6 +13,26 @@ public class User {
 	@Column(name="password")
 	private String password;
 
+	
+//Possible Refactor for User
+	/*
+	 * name: Official School Name
+	 */
+	@Column(name="name")
+	private String name;
+	
+	/*
+	 * contactInfo: a phone number.
+	 */
+	@Column(name="contactInfo")
+	private String contactInfo;
+	
+	/*
+	 * address: School street address.
+	 */
+	@Column(name="address")
+	private String address;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -39,6 +59,30 @@ public class User {
 		this.password = password;
 	} 
 	
-	
+	//Refactored Getters/Setters
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getContactInfo() {
+		return contactInfo;
+	}
+
+	public void setContactInfo(String contactInfo) {
+		this.contactInfo = contactInfo;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	
 }
