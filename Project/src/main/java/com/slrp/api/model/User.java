@@ -39,6 +39,10 @@ public class User {
 		this.setName(Name);
 		this.setContactInfo(contactInfo);
 	}
+	public User()
+	{
+		
+	}
 	
 	public Integer getId() {
 		return id;

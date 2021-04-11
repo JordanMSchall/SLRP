@@ -1,11 +1,15 @@
 package com.slrp.util;
 
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
+import com.slrp.api.model.Student;
+import com.slrp.api.model.Student.Loan;
 
 import org.hibernate.HibernateException;
 
@@ -16,6 +20,26 @@ import org.hibernate.Transaction;
  * @since JavaSE-1.8
  */
 public class DatabaseUtil {
+	
+	public static Student getStudent()
+	{
+		int loansToGenerate = 5;
+		ArrayList<Student> toReturn = new ArrayList<Student>();
+		ArrayList<Loan> loans;
+		Random rand = new Random();
+		Student a = new Student("John");
+			//amnt, interest, ID
+			for(int k = 0; k < loansToGenerate + 1; k++)
+			{
+				Loan l = new Loan(5000 + rand.nextInt(50000), rand.nextDouble(), Integer.toString(1000+rand.nextInt(9999)),"Great Lakes");
+				a.getLoans().add(l);
+			}
+			toReturn.add(a);
+		return a;
+	}
+	
+	
+	
 //	static SessionFactory sessionFactory = null;
 //
 //	public static SessionFactory getSessionFactory() {
