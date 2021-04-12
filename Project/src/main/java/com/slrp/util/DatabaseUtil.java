@@ -7,6 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.slrp.api.model.Contributor;
+import com.slrp.api.model.Contributor.Contribution;
+import com.slrp.api.model.Student;
+import com.slrp.api.model.Student.Loan;
+
 import org.hibernate.HibernateException;
 
 import org.hibernate.Session;
@@ -19,6 +24,24 @@ public class DatabaseUtil {
 	
 	public static List<?> getSchoolLoans(){
 		return new ArrayList<String>();
+	}
+	
+	/**
+	 * Because we do not have the database connection yet, this is here to create a mockup contributor.
+	 * @return returns a generated contributor.
+	 */
+	public static Contributor createContributor() {
+		Contributor c = new Contributor("Louis Nodskov", "4025555555", "1234 Pine Street");
+		//c.addContribution(new Contribution(new Loan(0, 0, null), 0, null));
+		Loan l = new Loan(5000, 100.0, "12345");
+		Loan l1 = new Loan(6000, 125.0, "54321");
+		Contribution c1 = new Contribution(l, 50.50, "4/12/2021");
+		Contribution c2 = new Contribution(l, 50.50, "4/12/2021");
+		Contribution c3 = new Contribution(l1, 120.42, "4/3/2021");
+		c.addContribution(c1);
+		c.addContribution(c2);
+		c.addContribution(c3);
+		return c;
 	}
 	
 //	static SessionFactory sessionFactory = null;

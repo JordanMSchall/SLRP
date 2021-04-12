@@ -16,7 +16,26 @@ import com.slrp.api.model.Student.Loan;
 public class Contributor extends User {
 	
 	private ArrayList<Contribution> contributions;
-
+	
+	/**
+	 * Default constructor for contribution
+	 * @param Name: the contributors name.
+	 * @param contactInfo: the contributors contact info.
+	 * @param address: the contributors address.
+	 */
+	public Contributor(String Name, String contactInfo, String address) {
+		super(Name, contactInfo, address);
+		// TODO Auto-generated constructor stub
+		this.contributions = new ArrayList<Contribution>();
+	}
+	
+	/**
+	 * Overloaded constructor for contribution
+	 * @param Name: the contributors name.
+	 * @param contactInfo: the contributors contact info.
+	 * @param address: the contributors address.
+	 * @param contributions: the list of contributions that have been made.
+	 */
 	public Contributor(String Name, String contactInfo, String address, ArrayList<Contribution> contributions) {
 		super(Name, contactInfo, address);
 		// TODO Auto-generated constructor stub

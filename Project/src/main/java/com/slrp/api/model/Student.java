@@ -13,7 +13,7 @@ import java.util.Map;
 @Entity
 public class Student extends User {
 	
-	public class Loan {
+	public static class Loan {
 		private int loanamount;
 		private String ID;
 		private double interest;

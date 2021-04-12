@@ -1,7 +1,10 @@
 package com.slrp.controller;
 
+import com.slrp.api.model.Contributor;
+import com.slrp.api.model.Contributor.Contribution;
 import com.slrp.util.DatabaseUtil;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -35,7 +38,16 @@ public class HubController {
 	}
 	
 	@RequestMapping("/contributor")
-	public String contributor() {
+	public String contributor(Map<String,Object> model) {
+		Contributor c = DatabaseUtil.createContributor();
+		
+		ArrayList<Contribution> testContr = c.getContributions();
+		model.put("name", c.getName());
+		model.put("contactInfo", c.getContactInfo());
+		model.put("address", c.getAddress());
+		
+		model.put("contributions", c.getContributions());
+		
 		return "contributor";
 	}
 	
