@@ -1,26 +1,90 @@
 package com.slrp.api.model;
 
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 public class Loan {
-	private int amount;
-	private String ID;
-	private double interest;
-	private String dateTaken;
+	/**
+	 * Auto generated primary key in the database.
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "l_id")
+	private long id;
+
+	/**
+	 * The amount that is on the loan
+	 */
+	@Column(name = "l_amount")
+	private String amount;
+
+	/**
+	 * The date the loan was loaded into the system
+	 */
+	@Column(name = "l_entered_system_date")
+	private Timestamp enteredSystemDate;
+
+	/**
+	 * The date the borrower received the loan
+	 */
+	@Column(name = "l_date_disbursed")
+	private Timestamp disbursedDate;
+
+	/**
+	 * The date the borrower enters repayment for this loan
+	 */
+	@Column(name = "l_first_repayment_date")
+	private Timestamp firstRepaymentDate;
+
+	@ManyToOne
 	private Servicer servicer;
 
-	// Additional Loan Information (Interest Rate, Last Date Paid, Date Taken)
-	public Loan(int amount, double interest, String ID) {
-		this.setAmount(amount);
-		this.setInterest(interest);
-		this.setID(ID);
+	@ManyToOne
+	private Borrower borrower;
+
+	public long getId() {
+		return id;
 	}
 
-	//new Loan(5000 + rand.nextInt(50000), rand.nextDouble(), Integer.toString(1000 + rand.nextInt(9999)), "Great Lakes");
-	public Loan(int amount, double interest, String ID, Servicer servicer) {
-		// TODO Auto-generated constructor stub
-		this.setAmount(amount);
-		this.setInterest(interest);
-		this.setID(ID);
-		this.setServicer(servicer);
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+
+	public Timestamp getEnteredSystemDate() {
+		return enteredSystemDate;
+	}
+
+	public void setEnteredSystemDate(Timestamp enteredSystemDate) {
+		this.enteredSystemDate = enteredSystemDate;
+	}
+
+	public Timestamp getDisbursedDate() {
+		return disbursedDate;
+	}
+
+	public void setDisbursedDate(Timestamp disbursedDate) {
+		this.disbursedDate = disbursedDate;
+	}
+
+	public Timestamp getFirstRepaymentDate() {
+		return firstRepaymentDate;
+	}
+
+	public void setFirstRepaymentDate(Timestamp firstRepaymentDate) {
+		this.firstRepaymentDate = firstRepaymentDate;
 	}
 
 	public Servicer getServicer() {
@@ -31,36 +95,30 @@ public class Loan {
 		this.servicer = servicer;
 	}
 
-	public int getAmount() {
-		return amount;
+	public Borrower getBorrower() {
+		return borrower;
 	}
 
-	public void setAmount(int amount) {
+	public void setBorrower(Borrower borrower) {
+		this.borrower = borrower;
+	}
+
+	public Loan(String amount, Timestamp enteredSystemDate, Timestamp disbursedDate, Timestamp firstRepaymentDate,
+			Servicer servicer, Borrower borrower) {
+		super();
 		this.amount = amount;
+		this.enteredSystemDate = enteredSystemDate;
+		this.disbursedDate = disbursedDate;
+		this.firstRepaymentDate = firstRepaymentDate;
+		this.servicer = servicer;
+		this.borrower = borrower;
 	}
 
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public double getInterest() {
-		return interest;
-	}
-
-	public void setInterest(double interest) {
-		this.interest = interest;
-	}
-
-	public String getDateTaken() {
-		return dateTaken;
-	}
-
-	public void setDateTaken(String dateTaken) {
-		this.dateTaken = dateTaken;
+	@Override
+	public String toString() {
+		return "Loan [id=" + id + ", amount=" + amount + ", enteredSystemDate=" + enteredSystemDate + ", disbursedDate="
+				+ disbursedDate + ", firstRepaymentDate=" + firstRepaymentDate + ", servicer=" + servicer
+				+ ", borrower=" + borrower + "]";
 	}
 
 }

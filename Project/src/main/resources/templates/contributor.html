@@ -13,17 +13,19 @@
             </div>
             <div class="ContactInfo">
             	<h3>Your Contact Information: </h3> 
-	            <p> Phone Number: <span th:text=${contactInfo}></span> </p>
+	            <p> Phone Number: <span th:text=${contactInfo.primaryPhone}></span> </p>
 	            <p> Address: <span th:text=${address}></span></p>
 	        </div>
 	        <div>
 	        	<br>
 				<h3 class="center">Your Contributions</h3>
 		        <div class="Contribution" th:each="contribution : ${contributions}">
-		        	Loan ID: <span th:text="${contribution.loan.ID}"></span><br>
-		        	Loan Amount: $<span th:text="${contribution.loan.amount}"></span><br>
-	    			Contribution Amount: $<span th:text="${contribution.contributionAmt}" ></span><br>
-	    			Contribution Date: <span th:text="${contribution.date}" ></span>
+	    			Contribution Amount: $<span th:text="${contribution.amount}" ></span><br>
+	    			Contribution Date: <span th:text="${contribution.contributionDate}" ></span>
+	    			<div th:each="payment : ${contribution.payments}">
+	    				Loan Amount: $<span th:text="${payment.loan.amount}" ></span><br>
+	    				Loan Date: <span th:text="${payment.loan.disbursedDate}" ></span>
+	    			</div>
 				</div>
 				<br>
 	        </div>

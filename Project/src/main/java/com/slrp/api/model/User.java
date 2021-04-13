@@ -1,44 +1,54 @@
 package com.slrp.api.model;
 
+import java.util.Optional;
+
+import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.slrp.security.AES;
 
 @Entity
 public class User {
-
-	@Column(name="id")
+	/**
+	 * Auto generated primary key in the database.
+	 */
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "u_id")
 	private Integer id;
-	@Column(name="username")
-	private String username;
-	@Column(name="password")
-	private String password;
 
-	
-	/*
-	 * name: Official School Name
+	/**
+	 * The user username.
 	 */
-	@Column(name="name")
-	private String name;
-	
-	/*
-	 * contactInfo: a phone number.
+	@Column(name = "u_name")
+	private String username;
+
+	/**
+	 * The user password encrypted using AES in the setter. 
 	 */
-	@Column(name="contactInfo")
-	private String contactInfo;
+	@Column(name = "u_encrypted_password")
+	private String password;
 	
-	/*
-	 * address: School street address.
+	/**
+	 * The secret used to encrypt the password also encoded. 
 	 */
-	@Column(name="address")
-	private String address;
+	@Column(name = "u_encrypted_secret")
+	private String secret;
+
+	/**
+	 * The type of user, school, org, etc...
+	 */
+	@Column(name = "u_type")
+	private String type;
 	
-	public User(String name, String contactInfo, String address)
-	{
-		this.setAddress(address);
-		this.setName(name);
-		this.setContactInfo(contactInfo);
-	}
-	
+	@OneToOne
+	private Person person;
+
 	public Integer getId() {
 		return id;
 	}
@@ -56,38 +66,39 @@ public class User {
 	}
 
 	public String getPassword() {
-		// random hash
 		return password;
 	}
-
-	public void setPassword(String password) {
-		// random hash
-		this.password = password;
-	} 
 	
-	//Refactored Getters/Setters
-	public String getName() {
-		return name;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public String getContactInfo() {
-		return contactInfo;
+	public void setSecret(String secret) {
+		this.secret = AES.encrypt(secret, id.toString());
+	}
+	
+	public void setPassword(String password) {
+		this.password = AES.encrypt(password, this.secret);
 	}
 
-	public void setContactInfo(String contactInfo) {
-		this.contactInfo = contactInfo;
+	public String getEncryptedSecret() {
+		return this.secret;
+	}
+	
+	public String getEncryptedPassword() {
+		return this.password;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getType() {
+		return type;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setType(String type) {
+		this.type = type;
 	}
-
+	
 }
