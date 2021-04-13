@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 import java.util.ArrayList;
 import java.util.Map;
-import com.slrp.api.model.Student.Loan;
+import com.slrp.api.model.Loan;
 
 /**
  * Contributor Java File
@@ -13,7 +13,7 @@ import com.slrp.api.model.Student.Loan;
  * Holds the design of the Contributor user.
  */
 @Entity
-public class Contributor extends User {
+public class Contributor {
 	
 	private ArrayList<Contribution> contributions;
 	
@@ -24,7 +24,6 @@ public class Contributor extends User {
 	 * @param address: the contributors address.
 	 */
 	public Contributor(String Name, String contactInfo, String address) {
-		super(Name, contactInfo, address);
 		// TODO Auto-generated constructor stub
 		this.contributions = new ArrayList<Contribution>();
 	}
@@ -37,44 +36,11 @@ public class Contributor extends User {
 	 * @param contributions: the list of contributions that have been made.
 	 */
 	public Contributor(String Name, String contactInfo, String address, ArrayList<Contribution> contributions) {
-		super(Name, contactInfo, address);
 		// TODO Auto-generated constructor stub
 		this.setContributions(contributions);
 	}
 	
-	public static class Contribution {
-		
-		private Loan loan;
-		private double contributionAmt;
-		// TODO: This will be changed later to be using the date class.
-		// Connor and I have decided on using MM/DD/YYYY as a norm for our date for the time being. 
-		private String date;
-		
-		public Contribution(Loan l, double contributionAmt, String date) {
-			this.setLoan(l);
-			this.setContributionAmt(contributionAmt);
-			this.setDate(date);
-		}
-		
-		public Loan getLoan() {
-			return loan;
-		}
-		public void setLoan(Loan loan) {
-			this.loan = loan;
-		}
-		public double getContributionAmt() {
-			return contributionAmt;
-		}
-		public void setContributionAmt(double contributionAmt) {
-			this.contributionAmt = contributionAmt;
-		}
-		public String getDate() {
-			return date;
-		}
-		public void setDate(String date) {
-			this.date = date;
-		}
-	}
+	
 
 	/*
 	 * name: either a business name or personal name.

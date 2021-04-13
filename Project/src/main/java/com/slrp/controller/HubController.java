@@ -1,7 +1,7 @@
 package com.slrp.controller;
 
 import com.slrp.api.model.Contributor;
-import com.slrp.api.model.Contributor.Contribution;
+import com.slrp.api.model.Contribution;
 import com.slrp.util.DatabaseUtil;
 import java.util.ArrayList;
 import java.util.Map;

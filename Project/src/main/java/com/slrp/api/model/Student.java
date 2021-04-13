@@ -3,6 +3,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,65 +12,26 @@ import java.util.Map;
  * Holds the design of the Contributor user.
  */
 @Entity
-public class Student extends User {
-	
-	public class Loan {
-		private int loanamount;
-		private String ID;
-		private double interest;
-		private String dateTaken;
-		//Additional Loan Information (Interest Rate, Last Date Paid, Date Taken)
-		public Loan(int amount, double interest, String ID)
-		{
-			this.setLoanamount(amount);
-			this.setInterest(interest);
-			this.setID(ID);
-		}
-		
-		public int getLoanamount() {
-			return loanamount;
-		}
-		public void setLoanamount(int loanamount) {
-			this.loanamount = loanamount;
-		}
-		public String getID() {
-			return ID;
-		}
-		public void setID(String iD) {
-			ID = iD;
-		}
-		public double getInterest() {
-			return interest;
-		}
-		public void setInterest(double interest) {
-			this.interest = interest;
-		}
-		public String getDateTaken() {
-			return dateTaken;
-		}
-		public void setDateTaken(String dateTaken) {
-			this.dateTaken = dateTaken;
-		}
-		
-	}
+public class Student{
 	
 	/*
 	 * loans: A map where each key is a loan and the value is servicer.
 	 */
 	@Column(name="loans")
-	private ArrayList<Loan> loans = new ArrayList<Loan>();
+	private List<Loan> loans;
 
-	public Student(String name, String phonenumber, String address, ArrayList<Loan> loans)
+	public Student(String name, String phonenumber, String address, List<?> loans)
 	{
-		super(name,phonenumber,address);
+		// list of type...
 		this.setLoans(loans);
 	}
-	public ArrayList<Loan> getLoans() {
+	public List<Loan> getLoans() {
 		return loans;
 	}
 
-	public void setLoans(ArrayList<Loan> loans) {
-		this.loans = loans;
+	public void setLoans(List<?> loans) {
+		// list of type?
+		this.loans = (List<Loan>) loans;
 	}
 	public void addLoan(Loan l)
 	{
