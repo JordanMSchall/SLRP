@@ -1,6 +1,5 @@
 package com.slrp.controller;
 
-
 import com.slrp.api.model.Contributor;
 import com.slrp.api.model.Contributor.Contribution;
 import com.slrp.util.DatabaseUtil;
@@ -53,8 +52,5 @@ public class HubController {
 		// Jordans controller
 		return "test";
 	}
-
-
-
 
 }

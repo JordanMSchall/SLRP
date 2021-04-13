@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<style>
+	.button {
+  		border: none;
+  		color: black;
+  		padding: 16px 32px;
+  		text-align: center;
+  		text-decoration: none;
+  		display: inline-block;
+  		font-size: 16px;
+  		transition-duration: 0.4s;
+  		cursor: pointer;
+	}
+	.ContactInfo {
+		margin: auto;
+		font-size: 120%;
+		border: 5px solid green;
+		background-color: #FFFFF6;
+		border-image-outset: 10px;
+		text-align: center;
+		width: 40%;
+		padding: 10px
+	}
+	.Contribution {
+		margin: auto;
+		font-size: 120%;
+		border: 5px solid black;
+		border-width: 1px 5px;
+		background-color: #FFFFF6;
+		border-image-outset: 10px;
+		text-align: center;
+		width: 80%;
+		padding: 10px;
+	}
+	.Header {
+		text-align: center;
+	}
+	.Footer {
+		text-align: center;
+	}
+	.main {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.vertical-center {
+	  margin: 0;
+	  top: 50%;
+	  -ms-transform: translateY(-50%);
+	  transform: translateY(-50%);
+	}
+	.center {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+
+	</style>
+</head>
+<body>
+    <div class="main">
+        <div>
+            <!--  <h2>Hello ${message}</h2>-->
+            <div class="Header">
+            	<h1> Hello <span th:text=${name}></span></h1><br>
+            </div>
+            <div class="ContactInfo">
+            	<h3>Your Contact Information: </h3> 
+	            <p> Phone Number: <span th:text=${contactInfo}></span> </p>
+	            <p> Address: <span th:text=${address}></span></p>
+	        </div>
+	        <div>
+	        	<br>
+				<h3 class="center">Student Name: ${student}</h3>
+		        <div class="Loan" th:each="loan : ${loans}">
+		        	Loan Servicer: <span th:text="${loan.servicer}"></span><br>
+		        	Loan ID: <span th:text="${loan.ID}"></span><br>
+		        	Loan Amount: $<span th:text="${loan.loanamount}"></span><br>
+	    			Loan Interest: $<span th:text="${loan.interest}" ></span><br>
+				</div>
+				<br>
+	        </div>
+	        
+	        <br>
+	        <button type="button", class="button">Outreach!</button>
+	        
+	        <div class="Footer"> 
+	        	Click on this <strong><a href="/">link</a></strong> to go back to the home page.
+	        </div>      
+        </div>
+    </div>
+</body>
+</html>
