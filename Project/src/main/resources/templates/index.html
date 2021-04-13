@@ -1,19 +1,109 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<body>
-    <div>
-        <div>
-            <h1>Example</h1>
-            <!--  <h2>Hello ${message}</h2>-->
-            <tr th:each="message: ${messages}">
-			    <td th:text="${message}" />
-			    <td th:text="${message}" />
-			</tr>
-			</tr>
-			<br>
-            Click on this <strong><a href="next">link</a></strong> to visit another page.
-        </div>
-    </div>
-</body>
-</html>
+	xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="global.css">
+<div class="line"></div>
+<div class="wrapper">
+	<header role="banner">
+		<nav role="navigation">
+			<h1>
+				<a href="#">SLRP</a>
+			</h1>
+			<ul class="nav-ul">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Tech.</a></li>
+				<li><a href="#">Contacts</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main role="main">
+		<section class="sec-intro" role="section">
+			<img
+				src="https://www.techweekeurope.co.uk/wp-content/uploads/2012/07/wifimountaindownload.jpg"
+				alt="" />
+			<h1>Be Innovative!</h1>
+		</section>
+		<section class="sec-boxes" role="section">
+			<adrticle class="box">
+			<h1>Student</h1>
+			<p>Are you a student or borrower looking to get your loans payed off?</p>
+			<button class="button" type="button" role="button" value="MORE">Sign Up</button>
+			</adrticle>
+			<adrticle class="box">
+			<h1>School</h1>
+			<p>Are you a school trying to manage your student loans and CDR?</p>
+			<button class="button" type="button" role="button" value="MORE">Sign Up</button>
+			</adrticle>
+			<adrticle class="box">
+			<h1>Contributor</h1>
+			<p>Want to help solve the student loan problem?</p>
+			<button class="button" type="button" role="button" value="MORE">Sign Up</button>
+			</adrticle>
+		</section>
+		<section class="sec-events" role="section">
+			<h1>Upcoming Events</h1>
+			<article>
+				<h1>Outreach</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris
+					nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum.</p>
+				<a class="link" href="#">more...</a>
+			</article>
+		</section>
+		<section class="sec-standards" role="section">
+			<h1>Our Standards</h1>
+			<article>
+				<h1>Excellence</h1>
+				<p>Our goal is to give our customers the best solutions in
+					highest aquality. Our employees strive for excellence and work hard
+					to achieve it. Everything must work and be reliable. Great design
+					must be both, aesthetic and functional. Product or service that
+					pass these conditions will be everlasting.</p>
+			</article>
+			<article>
+				<h1>Uniqueness</h1>
+				<p>Our mantra is to create new paths. We are not interested in
+					copying others because we know, that if you want to succeed, you
+					have to be different, unique. Our customers know that we create
+					unique products and experience for them. This is the best way to
+					differentiate us and our brand from the noise on market. Unique,
+					different and proud.</p>
+			</article>
+		</section>
+		<section class="sec-partners" role="section">
+			<hr />
+			<h1>Our Partners</h1>
+			<div class="row">
+				<div class="logo-container">
+					<img src="https://i.imgur.com/oSriTuP.png" alt="Google logo" />
+				</div>
+				<div class="logo-container">
+					<img src="https://i.imgur.com/kRgvevC.png" alt="Apple logo" />
+				</div>
+				<div class="logo-container">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Omaha_Mavericks_logo.svg/1200px-Omaha_Mavericks_logo.svg.png" alt="UNO logo" />
+				</div>
+				<div class="logo-container">
+					<img src="https://i.imgur.com/NQwePGr.png"
+						alt="Microsoft logo" />
+				</div>
+			</div>
+		</section>
+	</main>
+</div>
+<footer>
+	<nav role="navigation">
+		<ul class="nav-ul">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About Us</a></li>
+			<li><a href="#">Technologies</a></li>
+			<li><a href="#">Contacts</a></li>
+		</ul>
+	</nav>
+</footer>
+<div class="line"></div>
