@@ -7,6 +7,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import com.slrp.api.model.Contributor;
+import com.slrp.api.model.Contributor.Contribution;
+import com.slrp.api.model.Student;
+import com.slrp.api.model.Student.Loan;
+
 import org.hibernate.HibernateException;
 
 import org.hibernate.Session;
