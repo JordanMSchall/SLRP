@@ -9,6 +9,15 @@
  		transition-duration: 0.4s;
  		cursor: pointer;
 }
+
+td{
+	text-align: center;
+}
+
+th{
+	color: 5px solid green;
+}
+
 .ContactInfo {
 	margin: auto;
 	font-size: 120%;

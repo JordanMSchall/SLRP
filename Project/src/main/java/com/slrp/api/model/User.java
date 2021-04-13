@@ -14,7 +14,6 @@ public class User {
 	private String password;
 
 	
-//Possible Refactor for User
 	/*
 	 * name: Official School Name
 	 */
@@ -33,10 +32,10 @@ public class User {
 	@Column(name="address")
 	private String address;
 	
-	public User(String Name, String contactInfo, String address)
+	public User(String name, String contactInfo, String address)
 	{
 		this.setAddress(address);
-		this.setName(Name);
+		this.setName(name);
 		this.setContactInfo(contactInfo);
 	}
 	

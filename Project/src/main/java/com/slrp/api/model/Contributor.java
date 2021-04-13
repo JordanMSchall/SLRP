@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import java.util.ArrayList;
-import java.util.Map;
-import com.slrp.api.model.Loan;
 
 /**
  * Contributor Java File
@@ -23,9 +21,12 @@ public class Contributor {
 	 * @param contactInfo: the contributors contact info.
 	 * @param address: the contributors address.
 	 */
-	public Contributor(String Name, String contactInfo, String address) {
+	public Contributor(String name, String contactInfo, String address) {
 		// TODO Auto-generated constructor stub
 		this.contributions = new ArrayList<Contribution>();
+		this.setAddress(address);
+		this.setName(name);
+		this.setContactInfo(contactInfo);
 	}
 	
 	/**
@@ -35,9 +36,12 @@ public class Contributor {
 	 * @param address: the contributors address.
 	 * @param contributions: the list of contributions that have been made.
 	 */
-	public Contributor(String Name, String contactInfo, String address, ArrayList<Contribution> contributions) {
+	public Contributor(String name, String contactInfo, String address, ArrayList<Contribution> contributions) {
 		// TODO Auto-generated constructor stub
 		this.setContributions(contributions);
+		this.setAddress(address);
+		this.setName(name);
+		this.setContactInfo(contactInfo);
 	}
 	
 	

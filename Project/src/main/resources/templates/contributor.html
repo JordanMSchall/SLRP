@@ -21,7 +21,7 @@
 				<h3 class="center">Your Contributions</h3>
 		        <div class="Contribution" th:each="contribution : ${contributions}">
 		        	Loan ID: <span th:text="${contribution.loan.ID}"></span><br>
-		        	Loan Amount: $<span th:text="${contribution.loan.loanamount}"></span><br>
+		        	Loan Amount: $<span th:text="${contribution.loan.amount}"></span><br>
 	    			Contribution Amount: $<span th:text="${contribution.contributionAmt}" ></span><br>
 	    			Contribution Date: <span th:text="${contribution.date}" ></span>
 				</div>
@@ -29,7 +29,7 @@
 	        </div>
 	        
 	        <br>
-	        <button type="button", class="button">Make New Contribution</button>
+	        <button type="button" class="button">Make New Contribution</button>
 	        
 	        <div class="Footer"> 
 	        	Click on this <strong><a href="/">link</a></strong> to go back to the home page.

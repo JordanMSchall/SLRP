@@ -1,7 +1,7 @@
 package com.slrp.api.model;
 
 public class Loan {
-	private int loanamount;
+	private int amount;
 	private String ID;
 	private double interest;
 	private String dateTaken;
@@ -9,7 +9,7 @@ public class Loan {
 
 	// Additional Loan Information (Interest Rate, Last Date Paid, Date Taken)
 	public Loan(int amount, double interest, String ID) {
-		this.setLoanamount(amount);
+		this.setAmount(amount);
 		this.setInterest(interest);
 		this.setID(ID);
 	}
@@ -17,7 +17,7 @@ public class Loan {
 	//new Loan(5000 + rand.nextInt(50000), rand.nextDouble(), Integer.toString(1000 + rand.nextInt(9999)), "Great Lakes");
 	public Loan(int amount, double interest, String ID, Servicer servicer) {
 		// TODO Auto-generated constructor stub
-		this.setLoanamount(amount);
+		this.setAmount(amount);
 		this.setInterest(interest);
 		this.setID(ID);
 		this.setServicer(servicer);
@@ -31,12 +31,12 @@ public class Loan {
 		this.servicer = servicer;
 	}
 
-	public int getLoanamount() {
-		return loanamount;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setLoanamount(int loanamount) {
-		this.loanamount = loanamount;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 	public String getID() {

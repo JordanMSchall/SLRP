@@ -1,22 +1,16 @@
 package com.slrp.util;
 
 import java.util.List;
-import java.util.Random;
+
+import javax.management.relation.Role;
+
 import java.util.ArrayList;
-import java.util.Iterator;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
+
 
 import com.slrp.api.model.Contributor;
 import com.slrp.api.model.Contribution;
 import com.slrp.api.model.Student;
 import com.slrp.api.model.Loan;
-
-import org.hibernate.HibernateException;
-
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  * @since JavaSE-1.8
@@ -28,7 +22,6 @@ public class DatabaseUtil {
 	}
 
 	public static Student getStudent() {
-		int loansToGenerate = 5;
 		List<Loan> loans = RecordGenerator.generateLoans(20);
 		Student a = new Student("John", "402-999-9999", "12345 Fake St", loans);
 		return a;
@@ -52,6 +45,36 @@ public class DatabaseUtil {
 		c.addContribution(c2);
 		c.addContribution(c3);
 		return c;
+	}
+	
+	public static List<Loan> listLoans(Object o) {
+		List<Loan> loans = new ArrayList<Loan>();
+		if (o.getClass() == Student.class)
+			;
+				//loans = getStudentLoans()((Student) o);
+		
+		return loans; 
+//		List<User> resultList = new ArrayList<Post>();
+//
+//		Session session = getSessionFactory().openSession();
+//		Transaction tx = null; // each process needs transaction and commit the changes in DB.
+//
+//		try {
+//			tx = session.beginTransaction();
+//			List<?> Posts = session.createQuery("FROM Post").list();
+//			for (Iterator<?> iterator = Posts.iterator(); iterator.hasNext();) {
+//				Post Post = (Post) iterator.next();
+//				resultList.add(Post);
+//			}
+//			tx.commit();
+//		} catch (HibernateException e) {
+//			if (tx != null)
+//				tx.rollback();
+//			e.printStackTrace();
+//		} finally {
+//			session.close();
+//		}
+//		return resultList;
 	}
 
 

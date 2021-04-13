@@ -1,9 +1,8 @@
 package com.slrp.controller;
 
 import com.slrp.api.model.Contributor;
-import com.slrp.api.model.Contribution;
+import com.slrp.api.model.Student;
 import com.slrp.util.DatabaseUtil;
-import java.util.ArrayList;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,11 +28,34 @@ public class HubController {
 		return "index";
 	}
 	
-	@RequestMapping("/student")
-	public String student() {
-		// Jordans controller
-		return "Greetings from Student!";
+	@RequestMapping("/login")
+	public String login(Map<String, Object> model) {
+		// User user = go to database and check if username exists
+		// if ( user == null )
+			//return "login";
+		// verify pw
+		// User
+		String userType = ""; // get off request
+		switch(userType) {
+		case  "student":
+			return student(model);
+		}
+		return "index";
 	}
+	
+	@RequestMapping("/student")
+	public String student(Map<String, Object> model) {
+		Student stud = DatabaseUtil.getStudent();
+		//model.put("loans", a.getLoans());
+		model.put("student", stud);
+		return "student";
+	}
+	
+	@RequestMapping("/student_signup")
+	public String studentSignUp(Map<String, Object> model) {
+		return "student";
+	}
+	
 	
 	@RequestMapping("/contributor")
 	public String contributor(Map<String,Object> model) {
@@ -47,10 +69,5 @@ public class HubController {
 		return "contributor";
 	}
 	
-	@RequestMapping("/t")
-	public String test() {
-		// Jordans controller
-		return "test";
-	}
 
 }
