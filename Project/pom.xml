@@ -4,16 +4,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-
-	<groupId>com.softeng</groupId>
+	<groupId>com.slrp</groupId>
 	<artifactId>SLRP</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SLRP</name>
-	<packaging>war</packaging>
 	<description>SLRP project for Spring Boot</description>
 
 	<properties>
-		<start-class>com.softeng.Application</start-class>
+		<start-class>com.slrp.Application</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -26,16 +24,6 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<dependencies>
-		<!--  <dependency>
-		    <groupId>org.thymeleaf</groupId>
-		    <artifactId>thymeleaf</artifactId>
-		    <version>3.0.11.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.thymeleaf</groupId>
-		    <artifactId>thymeleaf-spring5</artifactId>
-		    <version>3.0.11.RELEASE</version>
-		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -75,7 +63,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>slrp-api</finalName>
+		<finalName>SLRP</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
