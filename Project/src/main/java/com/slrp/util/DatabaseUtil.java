@@ -24,17 +24,15 @@ public class DatabaseUtil {
 	public static Student getStudent()
 	{
 		int loansToGenerate = 5;
-		ArrayList<Student> toReturn = new ArrayList<Student>();
-		ArrayList<Loan> loans;
+		ArrayList<Loan> loans = new  ArrayList<Loan>();
 		Random rand = new Random();
-		Student a = new Student("John");
 			//amnt, interest, ID
 			for(int k = 0; k < loansToGenerate + 1; k++)
 			{
 				Loan l = new Loan(5000 + rand.nextInt(50000), rand.nextDouble(), Integer.toString(1000+rand.nextInt(9999)),"Great Lakes");
-				a.getLoans().add(l);
+				loans.add(l);
 			}
-			toReturn.add(a);
+		Student a = new Student("John","402-999-9999","12345 Fake St",loans );
 		return a;
 	}
 	

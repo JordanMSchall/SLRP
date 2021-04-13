@@ -17,7 +17,17 @@ public class HubController {
 	public String index(Map<String, Object> model) {
 		// Jordans controller
 		// map java entity
-		model.put("message", "HowToDoInJava Reader !!");
+		String [] messages = {"Hello", "World"};
+		model.put("messages", messages);
+		return "index";
+	}
+
+	@RequestMapping("/index")
+	public String index2(Map<String, Object> model) {
+		// Jordans controller
+		// map java entity
+		String [] messages = {"Hello", "World"};
+		model.put("messages", messages);
 		return "index";
 	}
 	
