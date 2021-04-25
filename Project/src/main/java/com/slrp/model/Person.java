@@ -1,4 +1,4 @@
-package com.slrp.api.model;
+package com.slrp.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -191,6 +191,12 @@ public class Person implements Contributor {
 		if ( this.contributions == null )
 			this.contributions = new ArrayList<Contribution>();
 		this.contributions.add(cont);
+		
+	}
+
+	@Override
+	public void makeContribution() {
+		// TODO Auto-generated method stub
 		
 	}
 

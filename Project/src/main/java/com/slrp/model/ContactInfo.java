@@ -1,4 +1,4 @@
-package com.slrp.api.model;
+package com.slrp.model;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

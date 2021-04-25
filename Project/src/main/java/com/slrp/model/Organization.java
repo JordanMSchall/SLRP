@@ -1,4 +1,4 @@
-package com.slrp.api.model;
+package com.slrp.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -93,6 +93,13 @@ public class Organization implements Contributor {
 		this.name = name;
 		this.contributions = contributions;
 		this.contactInfo = contactInfo;
+	}
+
+
+	@Override
+	public void makeContribution() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

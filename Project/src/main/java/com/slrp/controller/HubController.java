@@ -1,9 +1,9 @@
 package com.slrp.controller;
 
-import com.slrp.api.model.Borrower;
-import com.slrp.api.model.Organization;
-import com.slrp.api.model.Person;
-import com.slrp.api.model.School;
+import com.slrp.model.Borrower;
+import com.slrp.model.Organization;
+import com.slrp.model.Person;
+import com.slrp.model.School;
 import com.slrp.util.DatabaseUtil;
 import com.slrp.util.RecordGenerator;
 

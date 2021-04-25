@@ -1,4 +1,4 @@
-package com.slrp.api.model;
+package com.slrp.model;
 
 import java.sql.Timestamp;
 

@@ -6,14 +6,15 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import com.slrp.api.model.Borrower;
-import com.slrp.api.model.ContactInfo;
-import com.slrp.api.model.Contribution;
-import com.slrp.api.model.Loan;
-import com.slrp.api.model.Payment;
-import com.slrp.api.model.Person;
-import com.slrp.api.model.School;
-import com.slrp.api.model.Servicer;
+
+import com.slrp.model.Borrower;
+import com.slrp.model.ContactInfo;
+import com.slrp.model.Contribution;
+import com.slrp.model.Loan;
+import com.slrp.model.Payment;
+import com.slrp.model.Person;
+import com.slrp.model.School;
+import com.slrp.model.Servicer;
 
 public class RecordGenerator {
 	private static Random rand = new Random();
