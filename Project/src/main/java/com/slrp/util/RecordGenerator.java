@@ -103,7 +103,7 @@ public class RecordGenerator {
 		// loans)
 		Borrower borrower = new Borrower(2021, person, school, null);
 		generateNLoansForBorrower(borrower, rand.nextInt(7));
-		school.setBorrower(Arrays.asList(borrower));
+		school.setBorrowers(Arrays.asList(borrower));
 		person.setBorrower(borrower);
 		return borrower;
 	}

@@ -1,11 +1,11 @@
-package com.slrp.beans;
+package com.slrp.beans.processor;
 
 import java.io.File;
 
-import com.slrp.interfaces.FileProcessorFactory;
+import com.slrp.abstracts.FileProcessorFactory;
 import com.slrp.logging.FileProcessException;
 
-public class XMLProcessor extends FileProcessorFactory {
+public class CommonLineProcessor extends FileProcessorFactory {
 
 	@Override
 	public void persistFile(File file) throws FileProcessException {

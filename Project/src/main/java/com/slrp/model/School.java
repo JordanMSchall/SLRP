@@ -76,11 +76,11 @@ public class School {
 		this.contact = contact;
 	}
 
-	public List getBorrower() {
+	public List getBorrowers() {
 		return Borrower;
 	}
 
-	public void setBorrower(List borrower) {
+	public void setBorrowers(List borrower) {
 		Borrower = borrower;
 	}
 
