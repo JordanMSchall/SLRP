@@ -3,13 +3,17 @@ package com.slrp.model;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+
+
 //TODO this should be an interface
+@Entity
 public class Borrower {
 	/**
 	 * Auto generated primary key in the database.
@@ -40,8 +44,8 @@ public class Borrower {
 	/**
 	 * The loans taken by this borrower
 	 */
-	@OneToMany
-	private List loans;
+	@OneToMany(targetEntity=Loan.class)
+	private List<Loan> loans;
 
 	public long getId() {
 		return id;

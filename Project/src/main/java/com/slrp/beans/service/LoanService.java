@@ -11,7 +11,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.slrp.model.Loan;
-import com.slrp.util.DatabaseService;
 
 
 public class LoanService {

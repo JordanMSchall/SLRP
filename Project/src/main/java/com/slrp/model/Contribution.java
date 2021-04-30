@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 import org.json.JSONObject;
 
@@ -36,17 +36,7 @@ public class Contribution {
 	@Column(name = "cont_date")
 	private Timestamp contributionDate;
 
-	/**
-	 * A Contributor is a Person or Organization that has made a contribution.
-	 */
-	@ManyToOne
-	private Organization org;
 
-	/**
-	 * A Contributor is a Person or Organization that has made a contribution.
-	 */
-	@ManyToOne
-	private Person person;
 	/**
 	 * A single contribution may go to many loans
 	 * 
@@ -60,10 +50,9 @@ public class Contribution {
 	 * there.
 	 * 
 	 */
-	@OneToOne(targetEntity = Payment.class)
+	@ManyToOne(targetEntity = ContributionProgram.class)
 	private ContributionProgram program;
-
-	private Contributor contributor;
+	
 
 	public long getId() {
 		return id;
@@ -89,14 +78,9 @@ public class Contribution {
 		this.contributionDate = contributionDate;
 	}
 
-	public Organization getContributor() {
-		return org;
-	}
-
-	public void setContributor(Organization contributor) {
-		this.contributor = contributor;
-	}
-
+//	public void setContributor(Organization contributor) {
+//		this.contributor = contributor;
+//	}
 
 	public List<Payment> getPayments() {
 		return payments;
@@ -114,20 +98,24 @@ public class Contribution {
 		this.program = program;
 	}
 
-	public Contribution(String amount, Timestamp contributionDate, Contributor contributor, List<Payment> payments,
+	public Contribution(String amount, Timestamp contributionDate,  List<Payment> payments,
 			ContributionProgram program) {
 		super();
 		this.amount = amount;
 		this.contributionDate = contributionDate;
-		this.contributor = contributor;
+		//this.contributor = contributor;
 		this.payments = payments;
 		this.program = program;
+	}
+
+	public Contribution(String amount2, Timestamp ts, Person person, Object program2) {
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
 		return "Contribution [id=" + id + ", amount=" + amount + ", contributionDate=" + contributionDate
-				+ ", contributor=" + contributor + ", payments=" + payments + ", program=" + program + "]";
+				 + ", payments=" + payments + ", program=" + program + "]";
 	}
 
 	public JSONObject toJSON() {
@@ -136,7 +124,7 @@ public class Contribution {
 		obj.put("id", this.id);
 		obj.put("amount", this.amount);
 		obj.put("contributionDate", this.contributionDate);
-		obj.put("contributor", this.contributor);
+		//obj.put("contributor", this.contributor);
 		obj.put("payments", this.payments);
 		obj.put("program", this.program);
 

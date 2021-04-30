@@ -3,12 +3,13 @@ package com.slrp.model;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+@Entity
 public class Servicer {
 	/**
 	 * Auto generated primary key in the database.
@@ -39,8 +40,8 @@ public class Servicer {
 	/**
 	 * The loans managed by this servicer.
 	 */
-	@OneToMany
-	private List loans;
+	@OneToMany(targetEntity = Loan.class)
+	private List<Loan> loans;
 
 	public long getId() {
 		return id;

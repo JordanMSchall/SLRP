@@ -1,14 +1,15 @@
 package com.slrp.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.slrp.security.AES;
 
 @Entity
 public class User {
@@ -48,7 +49,7 @@ public class User {
 	private Person person;
 	
 	
-	@OneToMany
+	@ManyToOne
 	private Organization org;
 
 	public Integer getId() {
@@ -80,11 +81,11 @@ public class User {
 	}
 
 	public void setSecret(String secret) {
-		this.secret = AES.encrypt(secret, id.toString());
+		this.secret = secret;
 	}
 	
 	public void setPassword(String password) {
-		this.password = AES.encrypt(password, this.secret);
+		this.password = password;
 	}
 
 	public String getEncryptedSecret() {

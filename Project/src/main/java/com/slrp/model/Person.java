@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-public class Person implements Contributor {
+@Entity
+public class Person {
 
 	/**
 	 * Auto generated primary key in the database.
@@ -63,13 +63,6 @@ public class Person implements Contributor {
 	@OneToOne
 	private ContactInfo contactInfo;
 
-	/**
-	 * The Department of Education definition of a borrower that maps to this person
-	 * if any.
-	 */
-	@OneToMany
-	private Borrower borrower;
-	
 
 	/**
 	 * The contributions made by this organization if any
@@ -141,13 +134,6 @@ public class Person implements Contributor {
 		this.contactInfo = contactInfo;
 	}
 
-	public Borrower getBorrower() {
-		return borrower;
-	}
-
-	public void setBorrower(Borrower borrower) {
-		this.borrower = borrower;
-	}
 
 	public List<Contribution> getContributions() {
 		return contributions;
@@ -158,7 +144,7 @@ public class Person implements Contributor {
 	}
 
 	public Person(String firstName, String middleName, String lastName, String prefix, String suffix, User user,
-			ContactInfo contactInfo, Borrower borrower, List<Contribution> contributions) {
+			ContactInfo contactInfo, List<Contribution> contributions) {
 		super();
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -167,19 +153,21 @@ public class Person implements Contributor {
 		this.suffix = suffix;
 		this.user = user;
 		this.contactInfo = contactInfo;
-		this.borrower = borrower;
 		this.contributions = contributions;
 	}
 
 	public Person(User user) {
+		super();
 		this.user = user;
 	}
 
 	
 	public Person() {
+		super();
 	}
 
 	public Person(User user, ContactInfo contactInfo) {
+		super();
 		this.user = user;
 		this.contactInfo = contactInfo;
 	}
@@ -188,7 +176,7 @@ public class Person implements Contributor {
 	public String toString() {
 		return "Person [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
 				+ ", prefix=" + prefix + ", suffix=" + suffix + ", user=" + user + ", contactInfo=" + contactInfo
-				+ ", borrower=" + borrower + ", contributions=" + contributions + "]";
+				+ ", contributions=" + contributions + "]";
 	}
 
 	public String getFullName() {
@@ -206,12 +194,6 @@ public class Person implements Contributor {
 		if ( this.contributions == null )
 			this.contributions = new ArrayList<Contribution>();
 		this.contributions.add(cont);
-		
-	}
-
-	@Override
-	public void makeContribution() {
-		// TODO Auto-generated method stub
 		
 	}
 

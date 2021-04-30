@@ -6,7 +6,10 @@ import com.slrp.model.Borrower;
 import com.slrp.model.ContactInfo;
 import com.slrp.model.Organization;
 import com.slrp.model.Person;
+import com.slrp.model.School;
 import com.slrp.model.User;
+import com.slrp.util.RecordGenerator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,25 +73,28 @@ public class HubController {
 
 	@RequestMapping("/borrower")
 	public String borrower(Model model) {
-//		// borrower
-//		Person p = RecordGenerator.generatePerson();
-//		RecordGenerator.generateContactInfo(p);
-//
-//		// school contact
-//		Person p2 = RecordGenerator.generatePerson();
-//		RecordGenerator.generateContactInfo(p);
-//
-//		School s = RecordGenerator.generateSchool();
-//		s.setContact(p2.getContactInfo());
-//
-//		Borrower borrower = RecordGenerator.generateBorrower(p, s);
-//
-//		User user = (User) model.getAttribute("user");
-//		user.setPerson(p);
-//		model.addAttribute("user", user);
-//		model.addAttribute("borrower", borrower);
-//		model.addAttribute("name", borrower.getPerson().getFullName());
-//		model.addAttribute("address", borrower.getPerson().getContactInfo().getAddress());
+		// borrower
+		Person p = RecordGenerator.generatePerson();
+		RecordGenerator.generateContactInfo(p);
+
+		// school contact
+		Person p2 = RecordGenerator.generatePerson();
+		RecordGenerator.generateContactInfo(p);
+
+		School s = RecordGenerator.generateSchool();
+		s.setContact(p2.getContactInfo());
+
+		Borrower borrower = RecordGenerator.generateBorrower(p, s);
+
+		//User user = (User) model.getAttribute("user");
+		//user.setPerson(p);
+		model.addAttribute("message", "FUCK");
+		model.addAttribute("person", p);
+		model.addAttribute("contactInfo", p.getContactInfo());
+		model.addAttribute("user", new User());
+		model.addAttribute("borrower", borrower);
+		model.addAttribute("name", borrower.getPerson().getFullName());
+		model.addAttribute("address", borrower.getPerson().getContactInfo().getAddress());
 		return "borrower";
 	}
 

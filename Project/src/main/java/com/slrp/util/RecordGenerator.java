@@ -85,7 +85,7 @@ public class RecordGenerator {
 		// ContactInfo contactInfo, Borrower borrower, List contributions)
 		Person person = new Person("first_" + Integer.toString(rand.nextInt(50000)),
 				"middle_" + Integer.toString(rand.nextInt(50000)), "last_" + Integer.toString(rand.nextInt(50000)),
-				null, null, null, null, null, null);
+				 null, null, null, null, null);
 		generateContactInfo(person);
 		return person;
 	}
@@ -104,7 +104,6 @@ public class RecordGenerator {
 		Borrower borrower = new Borrower(2021, person, school, null);
 		generateNLoansForBorrower(borrower, rand.nextInt(7));
 		school.setBorrowers(Arrays.asList(borrower));
-		person.setBorrower(borrower);
 		return borrower;
 	}
 
@@ -114,7 +113,7 @@ public class RecordGenerator {
 		Date date = new Date();
 		Timestamp ts =new Timestamp(date.getTime());
 		String amount = Integer.toString(rand.nextInt(50000));
-		Contribution cont = new Contribution(amount, ts, person, null, null );
+		Contribution cont = new Contribution(amount, ts, person, null );
 		// act as though the contribution is complete
 		//Payment(String amount, Timestamp dateApplied, Loan loan, Contribution contribution)
 		Payment payment = new Payment(amount, ts, generateRandomLoan(Integer.parseInt(amount) + 1000), cont );

@@ -18,7 +18,7 @@ import java.util.List;
  * @author louis, Jordan M. Schall Holds the design of the Contributor user.
  */
 @Entity
-public class Organization implements Contributor {
+public class Organization {
 
 	/**
 	 * Auto generated primary key in the database.
@@ -103,10 +103,5 @@ public class Organization implements Contributor {
 		this.name = "";
 	}
 
-	@Override
-	public void makeContribution() {
-		// TODO Auto-generated method stub
-
-	}
 
 }

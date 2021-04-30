@@ -41,8 +41,8 @@ public class School {
 	/**
 	 * The borrowers tied to this school.
 	 */
-	@OneToMany
-	private List Borrower;
+	@OneToMany(targetEntity=Borrower.class)
+	private List<Borrower> Borrower;
 
 	public long getId() {
 		return id;
