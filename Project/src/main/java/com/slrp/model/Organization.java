@@ -14,79 +14,83 @@ import java.util.List;
 
 /**
  * Organization Java File
- * @author louis, Jordan M. Schall
- * Holds the design of the Contributor user.
+ * 
+ * @author louis, Jordan M. Schall Holds the design of the Contributor user.
  */
 @Entity
 public class Organization implements Contributor {
-	
+
 	/**
 	 * Auto generated primary key in the database.
 	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="org_id")
+	@Column(name = "org_id")
 	private long id;
-	
+
 	/**
 	 * The name of the program.
 	 */
-	@Column(name="org_name")
+	@Column(name = "org_name")
 	private String name;
-	
+
 	/**
 	 * The contributions made by this organization if any
 	 */
-	@OneToMany( targetEntity=Contribution.class )
+	@OneToMany(targetEntity = Contribution.class)
 	private List contributions;
 
-	
+	/**
+	 * The users the organization is tied to.
+	 */
+	@OneToMany
+	private List<User> user;
+
 	/**
 	 * The contributions made by this organization if any
 	 */
-	@OneToOne( targetEntity=ContactInfo.class )
+	@OneToOne(targetEntity = ContactInfo.class)
 	private ContactInfo contactInfo;
-
 
 	public long getId() {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public List getContributions() {
 		return contributions;
 	}
 
-
 	public void setContributions(List contributions) {
 		this.contributions = contributions;
 	}
-
 
 	public ContactInfo getContactInfo() {
 		return contactInfo;
 	}
 
-
 	public void setContactInfo(ContactInfo contactInfo) {
 		this.contactInfo = contactInfo;
 	}
 
+	public List<User> getUser() {
+		return user;
+	}
+
+	public void setUser(List<User> user) {
+		this.user = user;
+	}
 
 	public Organization(String name, List contributions, ContactInfo contactInfo) {
 		super();
@@ -95,11 +99,14 @@ public class Organization implements Contributor {
 		this.contactInfo = contactInfo;
 	}
 
+	public Organization() {
+		this.name = "";
+	}
 
 	@Override
 	public void makeContribution() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

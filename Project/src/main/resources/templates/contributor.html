@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet" href="contributor.css">
 </head>
 <body>
-    <div class="main">
-        <div>
-            <!--  <h2>Hello ${message}</h2>-->
-            <div class="Header">
-            	<h1> Hello <span th:text=${name}></span></h1><br>
-            </div>
-            <div class="ContactInfo">
-            	<h3>Your Contact Information: </h3> 
-	            <p> Phone Number: <span th:text=${contactInfo.primaryPhone}></span> </p>
-	            <p> Address: <span th:text=${address}></span></p>
-	        </div>
-	        <div>
-	        	<br>
+	<div class="main">
+		<div>
+			<div class="Header">
+				<h1>
+					Hello <span th:text=${name}></span>
+				</h1>
+				<br>
+			</div>
+			<div class="ContactInfo">
+				<h3>Your Contact Information:</h3>
+				<p>
+					Phone Number: <span th:text=${contactInfo.primaryPhone}></span>
+				</p>
+				<p>
+					Address: <span th:text=${address}></span>
+				</p>
+			</div>
+			<div>
+				<br>
 				<h3 class="center">Your Contributions</h3>
-		        <div class="Contribution" th:each="contribution : ${contributions}">
-	    			Contribution Amount: $<span th:text="${contribution.amount}" ></span><br>
-	    			Contribution Date: <span th:text="${contribution.contributionDate}" ></span>
-	    			<div th:each="payment : ${contribution.payments}">
-	    				Loan Amount: $<span th:text="${payment.loan.amount}" ></span><br>
-	    				Loan Date: <span th:text="${payment.loan.disbursedDate}" ></span>
-	    			</div>
+				<div class="Contribution" th:each="contribution : ${contributions}">
+					Contribution Amount: $<span th:text="${contribution.amount}"></span><br> Contribution Date: <span th:text="${contribution.contributionDate}"></span>
+					<div th:each="payment : ${contribution.payments}">
+						Loan Amount: $<span th:text="${payment.loan.amount}"></span><br> Loan Date: <span th:text="${payment.loan.disbursedDate}"></span>
+					</div>
 				</div>
 				<br>
-	        </div>
-	        
-	        <br>
-	        <button type="button" class="button">Make New Contribution</button>
-	        
-	        <div class="Footer"> 
-	        	Click on this <strong><a href="/">link</a></strong> to go back to the home page.
-	        </div>      
-        </div>
-    </div>
+			</div>
+			<br>
+			<button type="button" class="button">Make New Contribution</button>
+			<div class="Footer">
+				Click on this <strong><a href="/">link</a></strong> to go back to the home page.
+			</div>
+		</div>
+	</div>
 </body>
 </html>

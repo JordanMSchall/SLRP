@@ -1,48 +1,31 @@
 package com.slrp.util;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * @since JavaSE-1.8
  */
-public class DatabaseUtil {
+@Service
+public class DatabaseService {
 
+	static SessionFactory sessionFactory = null;
 
-//	static SessionFactory sessionFactory = null;
-//
-//	public static SessionFactory getSessionFactory() {
-//		if (sessionFactory != null) {
-//			return sessionFactory;
-//		}
-//		Configuration configuration = new Configuration().configure();
-//		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-//				.applySettings(configuration.getProperties());
-//		sessionFactory = configuration.buildSessionFactory(builder.build());
-//		return sessionFactory;
-//	}
-//
-//	public static List<Post> listPosts() {
-//		List<Post> resultList = new ArrayList<Post>();
-//
-//		Session session = getSessionFactory().openSession();
-//		Transaction tx = null; // each process needs transaction and commit the changes in DB.
-//
-//		try {
-//			tx = session.beginTransaction();
-//			List<?> Posts = session.createQuery("FROM Post").list();
-//			for (Iterator<?> iterator = Posts.iterator(); iterator.hasNext();) {
-//				Post Post = (Post) iterator.next();
-//				resultList.add(Post);
-//			}
-//			tx.commit();
-//		} catch (HibernateException e) {
-//			if (tx != null)
-//				tx.rollback();
-//			e.printStackTrace();
-//		} finally {
-//			session.close();
-//		}
-//		return resultList;
-//	}
+	public static SessionFactory getSessionFactory() {
+		if (sessionFactory != null) {
+			return sessionFactory;
+		}
+		Configuration configuration = new Configuration().configure();
+		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+				.applySettings(configuration.getProperties());
+		sessionFactory = configuration.buildSessionFactory(builder.build());
+		return sessionFactory;
+	}
+
 //
 //	public static void createPost(String title, String body) {
 //		Session session = getSessionFactory().openSession();

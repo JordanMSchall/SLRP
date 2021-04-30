@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="student.css">
+<link rel="stylesheet" href="borrower.css">
 </head>
 <body>
-    <div class="main">
-        <div>
-            <!--  <h2>Hello ${message}</h2>-->
-            <div class="Header">
-            	<h1> Hello <span th:text=${name}></span></h1><br>
-            </div>
-            <div class="ContactInfo">
-            	<h3>Your Contact Information: </h3> 
-	            <p> Phone Number: <span th:text=${borrower.person.contactInfo.primaryPhone}></span> </p>
-	            <p> Address: <span th:text=${address}></span></p>
-	        </div>
-	        <div>
-	        <br>
-	        <br>
-	        <table style="width:100%">
-			  <tr>
-			    <th>Servicer</th>
-			    <th>Loan ID</th>
-			    <th>Loan Amount</th>
-			    <th>Loan Interest</th>
-			  </tr>
-
-			    <tr class="Loan" th:each="loan : ${borrower.loans}">
-			    	<td><span th:text="${loan.servicer.name}"></span></td>
-		        	<td><span th:text="${loan.id}"></span></td>
-		        	<td>$<span th:text="${loan.amount}"></span></td>
-
-				</tr>
-			</table>
-	        
-	        <br>
-	        <button type="button" class="button">Outreach!</button>
-	        
-	        <div class="Footer"> 
-	        	Click on this <strong><a href="/">link</a></strong> to go back to the home page.
-	        </div>      
-        </div>
-    </div>
+	<div class="main">
+		<div>
+			<!--  <h2>Hello ${message}</h2>-->
+			<div class="Header">
+				<h1>
+					Hello <span th:text=${borrower.person.firstName}></span>
+				</h1>
+				<br>
+			</div>
+			<div class="ContactInfo">
+				<h3>Your Contact Information:</h3>
+				<p>
+					Phone Number: <span th:text=${borrower.person.contactInfo.primaryPhone}></span>
+				</p>
+				<p><span th:if="${borrower.person.contactInfo.address} != null"></span>
+					Address: <span th:text=${borrower.person.contactInfo.address}></span>
+				</p>
+			</div>
+			<div>
+				<br> <br> <span th:if="${borrower.loans != null}">
+					<table style="width: 100%">
+						<tr>
+							<th>Servicer</th>
+							<th>Loan ID</th>
+							<th>Loan Amount</th>
+							<th>Loan Interest</th>
+						</tr>
+						<tr class="Loan" th:each="loan : ${borrower.loans}">
+							<td><span th:text="${loan.servicer.name}"></span></td>
+							<td><span th:text="${loan.id}"></span></td>
+							<td>$<span th:text="${loan.amount}"></span></td>
+						</tr>
+					</table>
+				</span> <span th:if="${borrower.loans == null}">
+					<h1>You have no Loans!</h1>
+				</span> <br>
+				<button type="button" class="button">Outreach!</button>
+				<div class="Footer">
+					Click on this <strong><a href="/">link</a></strong> to go back to the home page.
+				</div>
+			</div>
+		</div>
 </body>
 </html>

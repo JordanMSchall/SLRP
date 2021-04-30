@@ -5,14 +5,18 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
- 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import com.slrp.model.User;
- 
+
+
+@PropertySource("classpath:application.properties")
 public class AES {
- 
+	@Value("${secret.default}")
+	private static String defaultSecret;
     private static SecretKeySpec secretKey;
     private static byte[] key;
  
@@ -36,6 +40,9 @@ public class AES {
  
     public static String encrypt(String strToEncrypt, String secret) 
     {
+    	if ( secret == null ) {
+    		secret = defaultSecret;
+    	}
         try
         {
             setKey(secret);

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+//TODO this should be an interface
 public class Borrower {
 	/**
 	 * Auto generated primary key in the database.
@@ -88,6 +89,13 @@ public class Borrower {
 		this.person = person;
 		this.school = school;
 		this.loans = loans;
+	}
+
+
+	public Borrower(User user, Person person, ContactInfo contactInfo) {
+		person.setContactInfo(contactInfo);
+		user.setPerson(person);
+		this.setPerson(person);
 	}
 
 	@Override

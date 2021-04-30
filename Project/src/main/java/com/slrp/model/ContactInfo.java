@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.slrp.beans.service.ProfileService;
+
 public class ContactInfo {
 
 	/**
@@ -180,8 +182,19 @@ public class ContactInfo {
 		this.org = org;
 	}
 	
+	public ContactInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getFormattedAddress() {
 		return this.address + "," + this.city + ","+ this.state + "," + this.zip;
+	}
+
+	@Override
+	public String toString() {
+		return "ContactInfo [id=" + id + ", primaryPhone=" + primaryPhone + ", secondaryPhone=" + secondaryPhone
+				+ ", address=" + address + ", roomNumber=" + roomNumber + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + ", email=" + email + ", person=" + person + ", org=" + org + "]";
 	}
 
 }

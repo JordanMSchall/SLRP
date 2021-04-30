@@ -1,7 +1,7 @@
 package com.slrp.beans;
 
 public class ProfileType {
-	static final int SCHOOL = 1;
-	static final int BORROWER = 2;
-	static final int CONTRIBUTOR = 3;
+	public static final String BORROWER = "borrower";
+	public static final String SCHOOL = "school";
+	public static final String CONTRIBUTOR = "contributor";
 }

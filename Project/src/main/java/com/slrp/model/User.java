@@ -1,13 +1,11 @@
 package com.slrp.model;
 
-import java.util.Optional;
-
-import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.slrp.security.AES;
@@ -48,6 +46,10 @@ public class User {
 	
 	@OneToOne
 	private Person person;
+	
+	
+	@OneToMany
+	private Organization org;
 
 	public Integer getId() {
 		return id;
@@ -101,8 +103,24 @@ public class User {
 		this.type = type;
 	}
 
+	public Organization getOrg() {
+		return org;
+	}
+
+	public void setOrg(Organization org) {
+		this.org = org;
+	}
+
 	public User() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", secret=" + secret + ", type="
+				+ type + ", person=" + person + ", org=" + org + "]";
+	}
+
+	
 	
 }

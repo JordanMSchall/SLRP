@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -68,6 +69,7 @@ public class Person implements Contributor {
 	 */
 	@OneToMany
 	private Borrower borrower;
+	
 
 	/**
 	 * The contributions made by this organization if any
@@ -167,6 +169,19 @@ public class Person implements Contributor {
 		this.contactInfo = contactInfo;
 		this.borrower = borrower;
 		this.contributions = contributions;
+	}
+
+	public Person(User user) {
+		this.user = user;
+	}
+
+	
+	public Person() {
+	}
+
+	public Person(User user, ContactInfo contactInfo) {
+		this.user = user;
+		this.contactInfo = contactInfo;
 	}
 
 	@Override
