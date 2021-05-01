@@ -4,6 +4,8 @@ import com.slrp.beans.ProfileType;
 import com.slrp.beans.service.ProfileService;
 import com.slrp.model.Borrower;
 import com.slrp.model.ContactInfo;
+import com.slrp.model.Contribution;
+import com.slrp.model.Loan;
 import com.slrp.model.Organization;
 import com.slrp.model.Person;
 import com.slrp.model.School;
@@ -88,7 +90,7 @@ public class HubController {
 
 		//User user = (User) model.getAttribute("user");
 		//user.setPerson(p);
-		model.addAttribute("message", "FUCK");
+		model.addAttribute("message", "nice");
 		model.addAttribute("person", p);
 		model.addAttribute("contactInfo", p.getContactInfo());
 		model.addAttribute("user", new User());
@@ -103,6 +105,8 @@ public class HubController {
 			@Validated @ModelAttribute("person") Person person,
 			@Validated @ModelAttribute("contactInfo") ContactInfo contactInfo, 
 			@Validated @ModelAttribute("org") Organization org, 
+			@Validated @ModelAttribute("contribution") Contribution contribution,
+			@Validated @ModelAttribute("loan") Loan loan,
 			BindingResult result, Model model) {
 		logger.debug("\n Found user!\n" + user.toString() + "\n");
 		logger.debug("\n Found person!\n" + person.toString() + "\n");
@@ -123,6 +127,8 @@ public class HubController {
 			return borrower(model);
 		case ProfileType.CONTRIBUTOR:
 			model.addAttribute("user", user);
+			model.addAttribute("contribution", contribution);
+			model.addAttribute("loan", loan);
 			// model.put("contributor", contributor);
 			return contributor(model);
 

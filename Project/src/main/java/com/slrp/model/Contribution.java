@@ -34,7 +34,8 @@ public class Contribution {
 	 * Contribution Date is the date in which the contribution was made.
 	 */
 	@Column(name = "cont_date")
-	private Timestamp contributionDate;
+	//TODO: This needs to be using Timestamp, using a string for now.
+	private String contributionDate;
 
 
 	/**
@@ -70,11 +71,11 @@ public class Contribution {
 		this.amount = amount;
 	}
 
-	public Timestamp getContributionDate() {
+	public String getContributionDate() {
 		return contributionDate;
 	}
 
-	public void setContributionDate(Timestamp contributionDate) {
+	public void setContributionDate(String contributionDate) {
 		this.contributionDate = contributionDate;
 	}
 
@@ -98,7 +99,7 @@ public class Contribution {
 		this.program = program;
 	}
 
-	public Contribution(String amount, Timestamp contributionDate,  List<Payment> payments,
+	public Contribution(String amount, String contributionDate,  List<Payment> payments,
 			ContributionProgram program) {
 		super();
 		this.amount = amount;
@@ -107,6 +108,10 @@ public class Contribution {
 		this.payments = payments;
 		this.program = program;
 	}
+	
+	public Contribution() {
+		
+	};
 
 	public Contribution(String amount2, Timestamp ts, Person person, Object program2) {
 		// TODO Auto-generated constructor stub
