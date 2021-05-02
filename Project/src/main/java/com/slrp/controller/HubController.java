@@ -116,9 +116,10 @@ public class HubController {
 //			return school(model);
 		case ProfileType.BORROWER:
 			user = new User(user);
+			person = new Person(user, contactInfo);
 			Borrower b = new Borrower(user, person, contactInfo);
 			model.addAttribute("user", user);
-			model.addAttribute("person", new Person(user, contactInfo));
+			model.addAttribute("person", person);
 			model.addAttribute("borrower", b);
 			profileService.createProfile(b);
 			return borrower(model);

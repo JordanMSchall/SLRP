@@ -170,6 +170,7 @@ public class Person {
 
 	public Person(User user, ContactInfo contactInfo) {
 		super();
+		contactInfo.setPerson(this);
 		this.user = user;
 		this.contactInfo = contactInfo;
 	}
