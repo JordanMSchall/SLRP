@@ -3,6 +3,7 @@ package com.slrp.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -54,13 +55,14 @@ public class Person {
 	/**
 	 * The user the person is tied to.
 	 */
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	private User user;
 
 	/**
 	 * The contact info of the person.
 	 */
-	@OneToOne
+	
+	@OneToOne(cascade = {CascadeType.ALL})
 	private ContactInfo contactInfo;
 
 

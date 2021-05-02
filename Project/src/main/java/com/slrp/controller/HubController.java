@@ -1,13 +1,13 @@
 package com.slrp.controller;
 
 import com.slrp.beans.ProfileType;
-import com.slrp.beans.service.ProfileService;
 import com.slrp.model.Borrower;
 import com.slrp.model.ContactInfo;
 import com.slrp.model.Organization;
 import com.slrp.model.Person;
 import com.slrp.model.School;
 import com.slrp.model.User;
+import com.slrp.service.ProfileService;
 import com.slrp.util.RecordGenerator;
 
 import org.slf4j.Logger;
@@ -115,6 +115,7 @@ public class HubController {
 //			model.addAttribute("user", user);
 //			return school(model);
 		case ProfileType.BORROWER:
+			user = new User(user);
 			Borrower b = new Borrower(user, person, contactInfo);
 			model.addAttribute("user", user);
 			model.addAttribute("person", new Person(user, contactInfo));

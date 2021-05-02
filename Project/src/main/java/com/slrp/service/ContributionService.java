@@ -1,4 +1,4 @@
-package com.slrp.beans.service;
+package com.slrp.service;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;

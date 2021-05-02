@@ -98,6 +98,7 @@ public class Borrower {
 
 	public Borrower(User user, Person person, ContactInfo contactInfo) {
 		person.setContactInfo(contactInfo);
+		person.setUser(user);
 		user.setPerson(person);
 		this.setPerson(person);
 	}

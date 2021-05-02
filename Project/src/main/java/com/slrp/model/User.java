@@ -1,7 +1,5 @@
 package com.slrp.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
 
 @Entity
 public class User {
@@ -19,7 +16,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "u_id")
-	private Integer id;
+	private Long id;
 
 	/**
 	 * The user username.
@@ -28,13 +25,13 @@ public class User {
 	private String username;
 
 	/**
-	 * The user password encrypted using AES in the setter. 
+	 * The user password encrypted using AES in the setter.
 	 */
 	@Column(name = "u_encrypted_password")
 	private String password;
-	
+
 	/**
-	 * The secret used to encrypt the password also encoded. 
+	 * The secret used to encrypt the password also encoded.
 	 */
 	@Column(name = "u_encrypted_secret")
 	private String secret;
@@ -44,19 +41,18 @@ public class User {
 	 */
 	@Column(name = "u_type")
 	private String type;
-	
+
 	@OneToOne
 	private Person person;
-	
-	
+
 	@ManyToOne
 	private Organization org;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -71,7 +67,7 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public Person getPerson() {
 		return person;
 	}
@@ -83,7 +79,7 @@ public class User {
 	public void setSecret(String secret) {
 		this.secret = secret;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -91,7 +87,7 @@ public class User {
 	public String getEncryptedSecret() {
 		return this.secret;
 	}
-	
+
 	public String getEncryptedPassword() {
 		return this.password;
 	}
@@ -116,12 +112,18 @@ public class User {
 		super();
 	}
 
+	public User(User user) {
+		this.username = user.getUsername();
+		this.password = user.getPassword();
+		this.type = user.getType();
+		this.person = user.getPerson();
+		this.org = user.getOrg();
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", secret=" + secret + ", type="
 				+ type + ", person=" + person + ", org=" + org + "]";
 	}
 
-	
-	
 }
