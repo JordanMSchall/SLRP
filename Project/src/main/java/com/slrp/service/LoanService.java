@@ -16,6 +16,7 @@ import com.slrp.repository.LoanRepository;
 @PropertySource("classpath:application.properties")
 public class LoanService {
 	private static final Logger logger = LoggerFactory.getLogger(LoanService.class);
+
 	@Autowired
 	LoanRepository loanRepository;
 

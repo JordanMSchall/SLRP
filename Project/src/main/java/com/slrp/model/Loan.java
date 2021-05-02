@@ -116,6 +116,10 @@ public class Loan {
 		this.borrower = borrower;
 	}
 
+	public Loan() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Loan [id=" + id + ", amount=" + amount + ", enteredSystemDate=" + enteredSystemDate + ", disbursedDate="

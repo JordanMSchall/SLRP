@@ -93,6 +93,10 @@ public class Payment {
 		this.contribution = contribution;
 	}
 
+	public Payment() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Payment [id=" + id + ", amount=" + amount + ", dateApplied=" + dateApplied + ", loan=" + loan
