@@ -1,5 +1,6 @@
 package com.slrp.model;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Contributor {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,9 +44,4 @@ public class Contributor {
 		super();
 		this.contributions = contributions;
 	}
-
-	public Contributor() {
-		// TODO Auto-generated constructor stub
-	};
-
 }
