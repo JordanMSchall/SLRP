@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.slrp.model.Borrower;
+import com.slrp.model.Contributor;
 import com.slrp.model.User;
 import com.slrp.repository.PersonRepository;
 import com.slrp.repository.UserRepository;
@@ -55,5 +56,11 @@ public class ProfileService {
 	public static String addAddress() {
 		// TODO Auto-generated method stub
 		return "Add Address!";
+	}
+
+	public void createProfile(Contributor c) {
+		personRepository.save(c.getPerson());
+		userRepository.save(c.getPerson().getUser());
+		
 	}
 }

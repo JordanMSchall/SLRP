@@ -101,7 +101,6 @@ public class Contribution {
 
 	public Contribution(String amount, String contributionDate,  List<Payment> payments,
 			ContributionProgram program) {
-		super();
 		this.amount = amount;
 		this.contributionDate = contributionDate;
 		//this.contributor = contributor;
@@ -110,8 +109,8 @@ public class Contribution {
 	}
 	
 	public Contribution() {
-		
-	};
+		this.amount = "$0.00"; 
+	}
 
 	public Contribution(String amount2, Timestamp ts, Person person, Object program2) {
 		// TODO Auto-generated constructor stub
@@ -126,12 +125,12 @@ public class Contribution {
 	public JSONObject toJSON() {
 
 		JSONObject obj = new JSONObject();
-		obj.put("id", this.id);
-		obj.put("amount", this.amount);
-		obj.put("contributionDate", this.contributionDate);
-		//obj.put("contributor", this.contributor);
-		obj.put("payments", this.payments);
-		obj.put("program", this.program);
+//		obj.put("id", this.id);
+//		obj.put("amount", this.amount);
+//		obj.put("contributionDate", this.contributionDate);
+//		//obj.put("contributor", this.contributor);
+//		obj.put("payments", this.payments);
+//		obj.put("program", this.program);
 
 		return obj;
 	}

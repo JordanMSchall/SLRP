@@ -17,16 +17,16 @@
 			<div class="ContactInfo">
 				<h3>Your Contact Information:</h3>
 				<p>
-					Phone Number: <span th:text=${contactInfo.primaryPhone}></span>
+					Phone Number: <span th:text=${person.contactInfo.primaryPhone}></span>
 				</p>
 				<p>
-					Address: <span th:text=${address}></span>
+					Address: <span th:text=${person.contactInfo.address}></span>
 				</p>
 			</div>
 			<div>
 				<br>
 				<h3 class="center">Your Contributions</h3>
-				<div class="Contribution" th:each="contribution : ${contributions}">
+				<div class="Contribution" th:each="contribution : ${person.contributions}">
 					Contribution Amount: $<span th:text="${contribution.amount}"></span><br> Contribution Date: <span th:text="${contribution.contributionDate}"></span>
 					<div th:each="payment : ${contribution.payments}">
 						Loan Amount: $<span th:text="${payment.loan.amount}"></span><br> Loan Date: <span th:text="${payment.loan.disbursedDate}"></span>
@@ -40,18 +40,13 @@
 					<div id="contributionModal" class="modal">
 						<!-- Modal content -->
 						<div class="modal-content" align="center">
-							<form action="#" th:action="@{/signup}" method="post" class="formModal">
-								<input type="hidden" th:value="contribution" th:attr="name='type'" />
+							<form action="#" th:action="@{/makeContribution}" method="post" class="formModal">
 								<table>
 									<tr>
 										<td class="pad-right">
 											<ul>
 												<li>Amount</li>
 												<li><input type="text" th:value="${contribution.amount}" name="amount" /></li>
-												<li>Date</li>
-												<li><input type="text" th:value="${contribution.contributionDate}" name="contributionDate" /></li>
-												<li>Loan ID</li>
-												<li><input type="text" th:value="${loan.id}" name="id" /></li>
 											</ul>
 										</td>
 										<td><button class="button" value="Submit">Submit</button>
@@ -70,16 +65,17 @@
 					<div id="emailBorrowersModal" class="modal">
 						<!-- Modal content -->
 						<div class="modal-content" align="center">
-							<form action="#" th:action="@{/signup}" method="post" class="formModal">
-								<input type="hidden" th:value="emailBorrowers" th:attr="name='type'" />
+							<form action="#" th:action="@{/outreach}" method="post" class="formModal">
 								<table>
 									<tr>
 										<td class="pad-right">
 											<ul>
 												<li>Phone Number</li>
-												<li><input type="text" th:value="${contactInfo.primaryPhone}" name="primaryPhone" /></li>
+												<li><input type="text" name="primaryPhone" /></li>
 												<li>Email</li>
-												<li><input type="text" th:value="${contactInfo.email}" name="email" /></li>
+												<li><input type="text" name="email" /></li>
+												<li>Message</li>
+												<li><input type="text" name="message" /></li>
 											</ul>
 										</td>
 										<td><button class="button" value="Submit">Contact</button>
@@ -98,14 +94,13 @@
 					<div id="viewLoansModal" class="modal">
 						<!-- Modal content -->
 						<div class="modal-content" align="center">
-							<form action="#" th:action="@{/signup}" method="post" class="formModal">
-								<input type="hidden" th:value="viewLoans" th:attr="name='type'" />
+							<form action="#" th:action="@{/viewLoans}" method="post" class="formModal">
 								<table>
 									<tr>
 										<td class="pad-right">
 											<ul>
 												<li>Loan ID</li>
-												<li><input type="text" th:value="${loan.id}" name="id" /></li>
+												<li><input type="text"  name="loan" /></li>
 											</ul>
 										</td>
 										<td><button class="button" value="Submit">View</button>
