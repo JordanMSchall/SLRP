@@ -1,6 +1,5 @@
 package com.slrp.model;
 
-<<<<<<< HEAD
 import java.util.List;
 
 import javax.persistence.Entity;
