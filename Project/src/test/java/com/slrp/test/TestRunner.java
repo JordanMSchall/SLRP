@@ -18,7 +18,7 @@ import com.slrp.service.LegalService;
 import com.slrp.service.LoanService;
 import com.slrp.service.PaymentService;
 import com.slrp.service.PersonService;
-import com.slrp.service.ProfileService;
+import com.slrp.service.UserService;
 
 @SpringBootTest(classes = Application.class)
 public class TestRunner {
@@ -45,7 +45,7 @@ public class TestRunner {
 	private PersonService personService;
 
 	@Autowired
-	private ProfileService profileService;
+	private UserService profileService;
 
 	@Autowired
 	private LegalService legalService;

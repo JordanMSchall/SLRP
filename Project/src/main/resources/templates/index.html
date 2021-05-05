@@ -12,8 +12,35 @@
 			<ul class="nav-ul">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">About Us</a></li>
-				<li><a href="#">Tech.</a></li>
-				<li><a href="#">Contacts</a></li>
+				<li><article onmouseover="mapModal('loginModal');">
+						<!-- The Modal -->
+						<div id="loginModal" class="modal">
+							<!-- Modal content -->
+							<div class="modal-content" align="center">
+								<form action="#" th:action="@{/login}" method="post" class="formModal">
+									<input type="hidden" th:value="login" th:attr="name='type'" />
+									<table>
+										<tr>
+											<td>
+												<ul>
+													<li>&nbsp;&nbsp;Username</li>
+													<li><input type="text" th:field="${user.username}" /></li>
+													<li><br>Password</li>
+													<li><input type="password" th:field="${user.password}" /></li>
+													<li><br></li>
+												</ul>
+											</td>
+										</tr>
+										<tr>
+											<td><button class="button" value="Submit">Login</button></td>
+											<td><button id="loginModal_close_button" class="cancel-button" type="button">Cancel</button></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
+						<button id="loginModal_button" class="button margin-top-30" type="button" role="button" value="MORE">Login</button>
+					</article></li>
 			</ul>
 		</nav>
 	</header>
@@ -48,8 +75,10 @@
 											<li><input type="password" th:field="${user.password}" /></li>
 										</ul>
 									</td>
-									<td><button class="button" value="Submit">Submit</button>
-										<button id="borrowerModal_close_button" class="cancel-button" type="button">Cancel</button></td>
+								</tr>
+								<tr>
+									<td><button class="button" value="Submit">Submit</button></td>
+									<td><button id="borrowerModal_close_button" class="cancel-button" type="button">Cancel</button></td>
 								</tr>
 							</table>
 						</form>
@@ -84,8 +113,10 @@
 											<li><input type="password" th:field="${user.password}" /></li>
 										</ul>
 									</td>
-									<td><button class="button" value="Submit">Submit</button>
-										<button id="schoolModal_close_button" class="cancel-button" type="button">Cancel</button></td>
+								</tr>
+								<tr>
+									<td><button class="button" value="Submit">Submit</button></td>
+									<td><button id="schoolModal_close_button" class="cancel-button" type="button">Cancel</button></td>
 								</tr>
 							</table>
 						</form>
@@ -120,8 +151,10 @@
 											<li><input type="password" th:field="${user.password}" /></li>
 										</ul>
 									</td>
-									<td><button class="button" value="Submit">Submit</button>
-										<button id="contributorModal_close_button" class="cancel-button" type="button">Cancel</button></td>
+								</tr>
+								<tr>
+									<td><button class="button" value="Submit">Submit</button></td>
+									<td><button id="contributorModal_close_button" class="cancel-button" type="button">Cancel</button></td>
 								</tr>
 							</table>
 						</form>

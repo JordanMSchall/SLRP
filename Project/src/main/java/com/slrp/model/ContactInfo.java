@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-import com.slrp.service.ProfileService;
+import com.slrp.service.UserService;
 
 @Entity
 public class ContactInfo {

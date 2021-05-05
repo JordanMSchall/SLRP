@@ -24,8 +24,8 @@ import com.slrp.repository.UserRepository;
 
 @Component
 @PropertySource("classpath:application.properties")
-public class ProfileService {
-	private static final Logger logger = LoggerFactory.getLogger(ProfileService.class);
+public class UserService {
+	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -62,5 +62,10 @@ public class ProfileService {
 		personRepository.save(c.getPerson());
 		userRepository.save(c.getPerson().getUser());
 		
+	}
+
+	public static User verifyUser(String username, String password) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

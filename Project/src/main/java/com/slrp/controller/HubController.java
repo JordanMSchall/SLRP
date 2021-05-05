@@ -11,7 +11,7 @@ import com.slrp.model.Person;
 import com.slrp.model.School;
 import com.slrp.model.User;
 import com.slrp.service.LoanService;
-import com.slrp.service.ProfileService;
+import com.slrp.service.UserService;
 import com.slrp.util.RecordGenerator;
 
 import java.util.Collection;
@@ -36,8 +36,8 @@ public class HubController {
 	private static final Logger logger = LoggerFactory.getLogger(HubController.class);
 
 	@Autowired
-	ProfileService profileService;
-	
+	UserService profileService;
+
 	@Autowired
 	LoanService loanService;
 
@@ -69,8 +69,43 @@ public class HubController {
 	}
 
 	@RequestMapping("/login")
-	public String login(Model model) {
-		return "index";
+	public String login(@RequestParam String username, @RequestParam String password, Model model) {
+		User user = UserService.verifyUser(username, password);
+		if (user != null) {
+			Person person = user.getPerson();
+			ContactInfo contactInfo = person.getContactInfo();
+			switch (user.getType()) {
+			// TODO: Ashley solution
+//					not implemented
+//					case ProfileType.SCHOOL:
+//						model.addAttribute("user", user);
+//						return school(model);
+			case ProfileType.BORROWER:
+				person.setUser(user);
+				person.setContactInfo(contactInfo);
+				Borrower b = new Borrower(user, person, contactInfo);
+				model.addAttribute("user", user);
+				model.addAttribute("person", person);
+				model.addAttribute("borrower", b);
+				profileService.createProfile(b);
+				return borrower(model);
+
+			case ProfileType.CONTRIBUTOR:
+//				user = new User(user);
+//				person.setUser(user);
+//				person.setContactInfo(contactInfo);
+//				Contributor c = new Contributor(person);
+//				model.addAttribute("contributor", c);
+//				model.addAttribute("user", person.getUser());
+//				model.addAttribute("contactInfo", person.getContactInfo());
+//				model.addAttribute("contribution", contribution);
+//				model.addAttribute("loan", loan);
+//				profileService.createProfile(c);
+				return contributor(model);
+
+			}
+		}
+		return index(model);
 	}
 
 	@RequestMapping("/borrower")
@@ -161,7 +196,7 @@ public class HubController {
 	@RequestMapping("/makeContribution")
 	public String makeContribution(@SessionAttribute("person") Person person, Model model) {
 		logger.debug("\n Found person!\n" + person.toString() + "\n");
-		
+
 		switch (person.getUser().getType()) {
 		// TODO: Ashley solution
 //				not implemented
@@ -172,20 +207,21 @@ public class HubController {
 			return borrower(model);
 		case ProfileType.CONTRIBUTOR:
 			if (person.getContributions() != null && !person.getContributions().isEmpty())
-				model.addAttribute("contribution",person.getContributions());
-			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0 )
-				model.addAttribute("loans",loanService.getLoans());
+				model.addAttribute("contribution", person.getContributions());
+			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0)
+				model.addAttribute("loans", loanService.getLoans());
 			Contribution c = new Contribution();
-			model.addAttribute("contribution", c );
+			model.addAttribute("contribution", c);
 			return contributor(model);
 		}
 		return "index";
 	}
 
 	@RequestMapping("/outreach")
-	public String outreach(@SessionAttribute("person") Person person, @RequestParam String primaryPhone, @RequestParam String message, @RequestParam String email, Model model) {
+	public String outreach(@SessionAttribute("person") Person person, @RequestParam String primaryPhone,
+			@RequestParam String message, @RequestParam String email, Model model) {
 		logger.debug("\n Found person!\n" + person.toString() + "\n");
-		
+
 		switch (person.getUser().getType()) {
 		// TODO: Ashley solution
 //				not implemented
@@ -196,20 +232,20 @@ public class HubController {
 			return borrower(model);
 		case ProfileType.CONTRIBUTOR:
 			if (person.getContributions() != null && !person.getContributions().isEmpty())
-				model.addAttribute("contribution",person.getContributions());
-			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0 )
-				model.addAttribute("loans",loanService.getLoans());
+				model.addAttribute("contribution", person.getContributions());
+			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0)
+				model.addAttribute("loans", loanService.getLoans());
 			Contribution c = new Contribution();
-			model.addAttribute("contribution", c );
+			model.addAttribute("contribution", c);
 			return contributor(model);
 		}
 		return "index";
 	}
 
 	@RequestMapping("/viewLoans")
-	public String viewLoans(@SessionAttribute("person") Person person,@RequestParam String loan, Model model) {
+	public String viewLoans(@SessionAttribute("person") Person person, @RequestParam String loan, Model model) {
 		logger.debug("\n Found person!\n" + person.toString() + "\n");
-		
+
 		switch (person.getUser().getType()) {
 		// TODO: Ashley solution
 //				not implemented
@@ -220,11 +256,11 @@ public class HubController {
 			return borrower(model);
 		case ProfileType.CONTRIBUTOR:
 			if (person.getContributions() != null && !person.getContributions().isEmpty())
-				model.addAttribute("contribution",person.getContributions());
-			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0 )
-				model.addAttribute("loans",loanService.getLoans());
+				model.addAttribute("contribution", person.getContributions());
+			if (loanService.getLoans().spliterator().getExactSizeIfKnown() != 0)
+				model.addAttribute("loans", loanService.getLoans());
 			Contribution c = new Contribution();
-			model.addAttribute("contribution", c );
+			model.addAttribute("contribution", c);
 			return contributor(model);
 		}
 		return "index";
