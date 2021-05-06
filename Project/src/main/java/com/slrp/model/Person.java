@@ -175,12 +175,6 @@ public class Person {
 		this.contactInfo = contactInfo;
 	}
 
-	@Override
-	public String toString() {
-		return "Person [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName=" + lastName
-				+ ", prefix=" + prefix + ", suffix=" + suffix + ", user=" + user + ", contactInfo=" + contactInfo
-				+ ", contributions=" + contributions + "]";
-	}
 
 	public String getFullName() {
 		String fullname = "";

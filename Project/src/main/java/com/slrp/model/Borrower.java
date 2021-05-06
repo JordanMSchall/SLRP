@@ -1,5 +1,6 @@
 package com.slrp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-
 
 //TODO this should be an interface
 @Entity
@@ -44,7 +43,7 @@ public class Borrower {
 	/**
 	 * The loans taken by this borrower
 	 */
-	@OneToMany(targetEntity=Loan.class)
+	@OneToMany(targetEntity = Loan.class)
 	private List<Loan> loans;
 
 	public long getId() {
@@ -87,14 +86,13 @@ public class Borrower {
 		this.loans = loans;
 	}
 
-	public Borrower( Integer cohortYear, Person person, School school, List loans) {
+	public Borrower(Integer cohortYear, Person person, School school, List loans) {
 		super();
 		this.cohortYear = cohortYear;
 		this.person = person;
 		this.school = school;
 		this.loans = loans;
 	}
-
 
 	public Borrower(User user, Person person, ContactInfo contactInfo) {
 		person.setContactInfo(contactInfo);
@@ -103,10 +101,14 @@ public class Borrower {
 		this.setPerson(person);
 	}
 
-	@Override
-	public String toString() {
-		return "Borrower [id=" + id + ", cohortYear=" + cohortYear + ", person=" + person + ", school=" + school
-				+ ", loans=" + loans + "]";
+	public Borrower() {
+		super();
+	}
+
+	public void addLoan(Loan loan) {
+		if(loans == null)
+			loans = new ArrayList<Loan>();
+		loans.add(loan);
 	}
 
 }

@@ -91,10 +91,13 @@ public class Servicer {
 		this.loans = loans;
 	}
 
-	@Override
-	public String toString() {
-		return "Servicer [id=" + id + ", name=" + name + ", doeId=" + doeId + ", contact=" + contact + ", loans="
-				+ loans + "]";
+	public Servicer() {
 	}
+	
+	public Servicer(String name) {
+		super();
+		this.name = name;
+	}
+
 
 }

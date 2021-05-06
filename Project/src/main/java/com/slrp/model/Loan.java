@@ -1,6 +1,8 @@
 package com.slrp.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.slrp.service.PaymentService;
 
 @Entity
 public class Loan {
+	
+	
 	/**
 	 * Auto generated primary key in the database.
 	 */
@@ -19,6 +28,12 @@ public class Loan {
 	@Column(name = "l_id")
 	private long id;
 
+	/**
+	 * The amount that is on the loan
+	 */
+	@Column(name = "l_doe_id", unique=true)
+	private String loanDoeId;
+	
 	/**
 	 * The amount that is on the loan
 	 */
@@ -48,6 +63,25 @@ public class Loan {
 
 	@ManyToOne
 	private Borrower borrower;
+	
+	@OneToMany
+	private List<Payment> payments;
+
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(List<Payment> payments) {
+		this.payments = payments;
+	}
+
+	public String getLoanDoeId() {
+		return loanDoeId;
+	}
+
+	public void setLoanDoeId(String loanId) {
+		this.loanDoeId = loanId;
+	}
 
 	public long getId() {
 		return id;
@@ -117,14 +151,24 @@ public class Loan {
 	}
 
 	public Loan() {
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String toString() {
-		return "Loan [id=" + id + ", amount=" + amount + ", enteredSystemDate=" + enteredSystemDate + ", disbursedDate="
-				+ disbursedDate + ", firstRepaymentDate=" + firstRepaymentDate + ", servicer=" + servicer
-				+ ", borrower=" + borrower + "]";
+
+	public void applyPayment(Payment p) {
+		
+		PaymentService paymentService = new PaymentService();
+		//TODO: implement currency handling
+		this.amount = Integer.toString(Integer.parseInt(this.amount) - Integer.parseInt(p.getAmount()));
+		if( this.payments == null ) {
+			this.payments = paymentService.getPaymentsByLoan(this);
+		}
+		if ( Integer.parseInt(this.amount) < 0) {
+			PendingPayment pp = new PendingPayment();
+			pp.setPayment(p);
+			paymentService.makePending(pp);
+			return;
+		}
+		this.payments.add(p);
 	}
 
 }

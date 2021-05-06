@@ -120,10 +120,4 @@ public class User {
 		this.org = user.getOrg();
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", secret=" + secret + ", type="
-				+ type + ", person=" + person + ", org=" + org + "]";
-	}
-
 }

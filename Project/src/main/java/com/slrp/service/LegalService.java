@@ -3,7 +3,7 @@ package com.slrp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
-
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -14,6 +14,7 @@ import com.slrp.repository.ContractRepository;
 
 
 @Component
+@Scope("singleton")
 @PropertySource("classpath:application.properties")
 public class LegalService {
 	private static final Logger logger = LoggerFactory.getLogger(LegalService.class);

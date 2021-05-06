@@ -20,10 +20,12 @@ import org.slf4j.LoggerFactory;
 import com.slrp.model.Borrower;
 import com.slrp.model.Contributor;
 import com.slrp.model.User;
+import com.slrp.repository.BorrowerRepository;
 import com.slrp.repository.PersonRepository;
 import com.slrp.repository.UserRepository;
 
 @Component
+@Scope("singleton")
 @PropertySource("classpath:application.properties")
 public class UserService {
 	private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -31,6 +33,8 @@ public class UserService {
 	UserRepository userRepository;
 	@Autowired
 	PersonRepository personRepository;
+	@Autowired
+	BorrowerRepository borrowerRepository;
 
 	@Value("${profile.version}")
 	private String version;
@@ -52,6 +56,7 @@ public class UserService {
 	public void createProfile(Borrower b) {
 		personRepository.save(b.getPerson());
 		userRepository.save(b.getPerson().getUser());
+		borrowerRepository.save(b);
 	}
 
 	public static String addAddress() {
@@ -62,14 +67,26 @@ public class UserService {
 	public void createProfile(Contributor c) {
 		personRepository.save(c.getPerson());
 		userRepository.save(c.getPerson().getUser());
-		
+
 	}
 
 	public User verifyUser(String username, String password) {
 		// TODO Auto-generated method stub
-		User u = userRepository.findByUsername(username).get(0);
-		if ( u != null && u.getPassword().equals(password))
+		List<User> list = userRepository.findByUsername(username);
+		if (list.isEmpty())
+			return null;
+		User u = list.get(0);
+
+		if (u != null && u.getPassword().equals(password))
 			return u;
 		return null;
+	}
+
+	public User checkUsername(String username) {
+		// TODO Auto-generated method stub
+		List<User> list = userRepository.findByUsername(username);
+		if (list.isEmpty())
+			return null;
+		return list.get(0);
 	}
 }
