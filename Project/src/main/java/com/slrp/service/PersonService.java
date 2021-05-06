@@ -9,7 +9,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.slrp.model.ContactInfo;
 import com.slrp.model.Person;
+import com.slrp.repository.ContactInfoRepository;
 import com.slrp.repository.PersonRepository;
 
 @Component
@@ -19,6 +21,9 @@ public class PersonService {
 	private static final Logger logger = LoggerFactory.getLogger(PersonService.class);
 	@Autowired
 	PersonRepository personRepository;
+	
+	@Autowired
+	ContactInfoRepository contactRepository;
 
 	public void createPerson(Person person) {
 		personRepository.save(person);
@@ -39,6 +44,11 @@ public class PersonService {
 
 	public void updatePerson(Person person) {
 		personRepository.save(person);
+	}
+
+	public void saveContact(ContactInfo contactInfo) {
+		contactRepository.save(contactInfo);
+		
 	}
 
 }

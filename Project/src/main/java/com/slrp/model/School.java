@@ -1,5 +1,6 @@
 package com.slrp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -41,8 +42,8 @@ public class School {
 	/**
 	 * The borrowers tied to this school.
 	 */
-	@OneToMany(targetEntity=Borrower.class)
-	private List<Borrower> Borrower;
+	@OneToMany(targetEntity = Borrower.class)
+	private List<Borrower> borrowers;
 
 	public long getId() {
 		return id;
@@ -76,12 +77,12 @@ public class School {
 		this.contact = contact;
 	}
 
-	public List getBorrowers() {
-		return Borrower;
+	public List<Borrower> getBorrowers() {
+		return borrowers;
 	}
 
-	public void setBorrowers(List borrower) {
-		Borrower = borrower;
+	public void setBorrowers(List<Borrower> borrowers) {
+		this.borrowers = borrowers;
 	}
 
 	public School(String name, String doeId, ContactInfo contact, List borrower) {
@@ -89,13 +90,18 @@ public class School {
 		this.name = name;
 		this.doeId = doeId;
 		this.contact = contact;
-		Borrower = borrower;
+		this.borrowers = borrower;
 	}
 
-	@Override
-	public String toString() {
-		return "School [id=" + id + ", name=" + name + ", doeId=" + doeId + ", contact=" + contact + ", Borrower="
-				+ Borrower + "]";
+	public School() {
+
+	}
+
+	public void addBorrower(Borrower b) {
+		if (this.borrowers == null)
+			this.borrowers = new ArrayList<Borrower>();
+		this.borrowers.add(b);
+
 	}
 
 }
