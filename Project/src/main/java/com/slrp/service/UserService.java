@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.hibernate.HibernateException;
@@ -64,8 +65,11 @@ public class UserService {
 		
 	}
 
-	public static User verifyUser(String username, String password) {
+	public User verifyUser(String username, String password) {
 		// TODO Auto-generated method stub
-		return false;
+		User u = userRepository.findByUsername(username).get(0);
+		if ( u != null && u.getPassword().equals(password))
+			return u;
+		return null;
 	}
 }

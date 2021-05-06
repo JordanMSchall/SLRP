@@ -21,7 +21,7 @@ public class User {
 	/**
 	 * The user username.
 	 */
-	@Column(name = "u_name")
+	@Column(name = "u_name", unique=true)
 	private String username;
 
 	/**

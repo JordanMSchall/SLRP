@@ -36,7 +36,7 @@ public class HubController {
 	private static final Logger logger = LoggerFactory.getLogger(HubController.class);
 
 	@Autowired
-	UserService profileService;
+	UserService userService;
 
 	@Autowired
 	LoanService loanService;
@@ -70,7 +70,7 @@ public class HubController {
 
 	@RequestMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password, Model model) {
-		User user = UserService.verifyUser(username, password);
+		User user = userService.verifyUser(username, password);
 		if (user != null) {
 			Person person = user.getPerson();
 			ContactInfo contactInfo = person.getContactInfo();
@@ -87,7 +87,7 @@ public class HubController {
 				model.addAttribute("user", user);
 				model.addAttribute("person", person);
 				model.addAttribute("borrower", b);
-				profileService.createProfile(b);
+				userService.createProfile(b);
 				return borrower(model);
 
 			case ProfileType.CONTRIBUTOR:
@@ -100,7 +100,7 @@ public class HubController {
 //				model.addAttribute("contactInfo", person.getContactInfo());
 //				model.addAttribute("contribution", contribution);
 //				model.addAttribute("loan", loan);
-//				profileService.createProfile(c);
+//				userService.createProfile(c);
 				return contributor(model);
 
 			}
@@ -158,7 +158,7 @@ public class HubController {
 			model.addAttribute("user", user);
 			model.addAttribute("person", person);
 			model.addAttribute("borrower", b);
-			profileService.createProfile(b);
+			userService.createProfile(b);
 			return borrower(model);
 
 		case ProfileType.CONTRIBUTOR:
@@ -171,7 +171,7 @@ public class HubController {
 			model.addAttribute("contactInfo", person.getContactInfo());
 			model.addAttribute("contribution", contribution);
 			model.addAttribute("loan", loan);
-			profileService.createProfile(c);
+			userService.createProfile(c);
 			return contributor(model);
 
 		}
