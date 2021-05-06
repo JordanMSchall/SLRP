@@ -52,35 +52,40 @@ public class SchoolController {
 		Person per = new Person();
 		per.setFirstName(firstName);
 		per.setLastName(lastName);
-		personService.createPerson(person);
+		personService.createPerson(per);
 		ContactInfo ci = new ContactInfo();
-		ci.setPerson(person);
+		ci.setPerson(per);
 		ci.setPrimaryPhone(primaryPhone);
 		Borrower b = new Borrower();
-		b.setPerson(person);
+		b.setPerson(per);
 		b.setSchool(school);
 		b.setCohortYear(Integer.parseInt(cohortYear));
 		Loan l = new Loan();
 		l.setLoanDoeId(loanId);
 		l.setAmount(loanAmount);
-		//l.setServicer()
+		loanService.createLoan(l);
+		l.setBorrower(b);
+		b.addLoan(l);
 		borrowerService.createBorrower(b);
+		//l.setServicer()
+		loanService.updateLoan(l);
 		school.addBorrower(b);
 		orgService.updateSchool(school);
+		model.addAttribute("person", person);
 		model.addAttribute("school", school);
 		personService.saveContact(ci);
 		return HubController.school(model);
 	}
 
 	@RequestMapping("/uploadfile")
-	public String login(@SessionAttribute("person") Person person, @SessionAttribute("school") School school,
+	public String uploadFile(
 			@RequestParam File file, Model model) {
 
 		return HubController.school(model);
 	}
 
 	@RequestMapping("/email")
-	public String login(@SessionAttribute("person") Person person, @SessionAttribute("school") School school,
+	public String email(@SessionAttribute("person") Person person, @SessionAttribute("school") School school,
 			@RequestParam String emailAddress, @RequestParam String message, Model model) {
 
 		return HubController.school(model);

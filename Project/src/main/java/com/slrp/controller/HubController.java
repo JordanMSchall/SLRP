@@ -119,6 +119,7 @@ public class HubController {
 
 		switch (user.getType()) {
 		case ProfileType.SCHOOL:
+			person.setUser(user);
 			orgService.createOrg(org);
 			personService.saveContact(contactInfo);
 			person.setContactInfo(contactInfo);
@@ -129,6 +130,7 @@ public class HubController {
 			s.setContact(contactInfo);
 			orgService.createSchool(s);
 			model.addAttribute("school", s);
+			userService.createProfile(person);
 			return school(model);
 		case ProfileType.BORROWER:
 			person.setUser(user);

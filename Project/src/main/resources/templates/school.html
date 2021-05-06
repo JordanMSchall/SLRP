@@ -86,7 +86,7 @@
 						</form>
 					</div>
 				</div>
-				<button id="fileModal_button" class="button" type="button" role="button" value="MORE">Sign Up</button>
+				<button id="fileModal_button" class="button" type="button" role="button" value="MORE">Load File</button>
 			</article>
 			<article class="box" onmouseover="mapModal('outreachModal');">
 				<h1>Outreach</h1>
@@ -102,9 +102,9 @@
 									<td class="pad-right">
 										<ul>
 											<li>Email Address</li>
-											<li><input type="text" size="250" name="emailAddress" /></li>
+											<li><input type="text" name="emailAddress" /></li>
 											<li>Message</li>
-											<li><input type="text" name="message" /></li>
+											<li><input type="text" style="height: 100px; width: 250px;" size="250" name="message" /></li>
 										</ul>
 									</td>
 								</tr>
@@ -120,30 +120,37 @@
 			</article>
 		</section>
 		<section class="sec-events" role="section">
-			<h1>Upcoming Events</h1>
+			<h1>Students</h1>
 			<article>
-				<h1>Outreach</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-					minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-					voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-					mollit anim id est laborum.</p>
-				<a class="link" href="#">more...</a>
+				<span th:if="${school.borrowers!= null}">
+					<table>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Loan ID</th>
+							<th>Loan Amount</th>
+						</tr>
+						<th:each class="Borrower" th:each="borrower : ${school.borrowers}">
+							<span th:if="${borrower.person != null}">
+							<tr>
+								<td><span th:text="${borrower.person.firstName}"></span></td>
+								<td><span th:text="${borrower.person.lastName}"></span></td>
+									<span th:if="${borrower.loans != null}"> 
+									<th:each class="Loan" th:each="loan : ${borrower.loans}">
+								<td><span th:text="${loan.loanDoeId}"></span></td>
+								<td><span th:text="${loan.amount}"></span></td>
+									</th:each>
+								</span>
+							<tr>
+							</span>
+						</th:each>
+					</table>
+				</span> <span th:if="${school.borrowers == null}"> Try Adding A Student Above!</span>
 			</article>
 		</section>
 		<section class="sec-standards" role="section">
-			<h1>Our Standards</h1>
-			<article>
-				<h1>Excellence</h1>
-				<p>Our goal is to give our customers the best solutions in highest aquality. Our employees strive for excellence and work hard to achieve it.
-					Everything must work and be reliable. Great design must be both, aesthetic and functional. Product or service that pass these conditions will be
-					everlasting.</p>
-			</article>
-			<article>
-				<h1>Uniqueness</h1>
-				<p>Our mantra is to create new paths. We are not interested in copying others because we know, that if you want to succeed, you have to be
-					different, unique. Our customers know that we create unique products and experience for them. This is the best way to differentiate us and our
-					brand from the noise on market. Unique, different and proud.</p>
-			</article>
+			<h1>Outreach</h1>
+			<article>Try Sending some emails!</article>
 		</section>
 		<section class="sec-partners" role="section">
 			<hr />

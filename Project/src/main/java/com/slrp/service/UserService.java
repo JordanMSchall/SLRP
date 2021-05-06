@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import com.slrp.model.Borrower;
 import com.slrp.model.Contributor;
+import com.slrp.model.Person;
 import com.slrp.model.User;
 import com.slrp.repository.BorrowerRepository;
 import com.slrp.repository.PersonRepository;
@@ -88,5 +89,11 @@ public class UserService {
 		if (list.isEmpty())
 			return null;
 		return list.get(0);
+	}
+
+	public void createProfile(Person person) {
+		personRepository.save(person);
+		userRepository.save(person.getUser());
+		
 	}
 }
