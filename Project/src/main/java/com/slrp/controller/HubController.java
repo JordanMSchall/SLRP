@@ -16,7 +16,6 @@ import com.slrp.service.OrgService;
 import com.slrp.service.PersonService;
 import com.slrp.service.UserService;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-@SessionAttributes({ "person", "borrower", "school", "contributor"})
+@SessionAttributes({ "person", "borrower", "school", "contributor" })
 @Controller
 public class HubController {
 	private static final Logger logger = LoggerFactory.getLogger(HubController.class);
@@ -52,28 +51,10 @@ public class HubController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-
-		if (model.getAttribute("user") == null)
-			model.addAttribute("user", new User());
-		if (model.getAttribute("contactInfo") == null)
-			model.addAttribute("contactInfo", new ContactInfo());
-		if (model.getAttribute("org") == null)
-			model.addAttribute("org", new Organization());
-		if (model.getAttribute("person") == null)
-			model.addAttribute("person", new Person());
-
-		if (model.getAttribute("user") != null && ((User) model.getAttribute("user")).getType() != null) {
-			String profType = ((User) model.getAttribute("user")).getType();
-			switch (profType) {
-			case ProfileType.SCHOOL:
-				return school(model);
-			case ProfileType.BORROWER:
-				return borrower(model);
-			case ProfileType.CONTRIBUTOR:
-				return contributor(model);
-			}
-		}
-
+		model.addAttribute("user", new User());
+		model.addAttribute("contactInfo", new ContactInfo());
+		model.addAttribute("org", new Organization());
+		model.addAttribute("person", new Person());
 		return "index";
 	}
 
@@ -152,6 +133,7 @@ public class HubController {
 			model.addAttribute("contactInfo", person.getContactInfo());
 			model.addAttribute("contribution", contribution);
 			model.addAttribute("loan", loan);
+			model.addAttribute("person",person);
 			userService.createProfile(c);
 			return contributor(model);
 
